@@ -6,7 +6,7 @@
 % english thesis in English language
 % hidelinks remove colour boxes around hyperlinks
 
-\documentclass[thesis=B,czech]{FITthesis}[2017/06/19]
+\documentclass[thesis=B,czech]{FITthesis}[2013/05/06]
 
 \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 
@@ -47,23 +47,13 @@
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 
-\begin{introduction}
-	%sem napište úvod Vaší práce
-	Častým scénářem při tvorbě různých skript, informačních podkladů, prezentací je spolupráce několika osob. V takových týmech je důležitá komunikace mezi jednotlivými členy a sdílení aktuálního rozpracovaného díla. K dispozici je spousta nástrojů, jichž smyslem je takovou tvorbu usnadnit; velké množství, různorodost, a v některých případech větší komplexita však značně komplikuje jejich nasazení. Důsledkem je uchýlení se k více známým a z podstaty primitivnějším řešením, například přeposílání rozdělané práce přes e-mail nebo předávání podkladů přes externí uložiště a nedělání záloh předešlých verzí, tj. neverzování. Tým tím ztrácí na efektivitě, což se může podepsat na kvalitě díla, jeho zdlouhavém vyhotovení a v extrémních případech hrozí i ztráta celé práce.
-\end{introduction}
+\input{sections/introduction.tex}
 
-\chapter{Cíl práce}
-Tristní situaci přednesenou v úvodu je tedy žádoucí vyřešit buď vyškolením účastníků týmu, nebo představením nového nástroje, který disponuje funkcemi komplexních nástrojů, ale zároveň je jednoduchý na použití i pro začátečníka, což je i cílem této práce, zhotovení nové aplikace určené pro operační systémy primárně Windows a Linux. K jeho dosažení je potřeba provést podrobnější analýzu současného stavu. Je tedy nutné proniknout do pracovních postupů autorů, jimž práce v týmu psaním v LaTeXu způsobuje potíže. Na základě například dotazníků či rozhovorů. Tímto se dostaneme do druhé fáze, kdy bude potřeba navrhnout principy aplikace, její nároky na uživatelské rozhraní a podporované funkce. Dále dojde k implementaci vybraného návrhu a na závěr k otestovaní dotazovanými z analytické části.
+\input{sections/goal.tex}
 
-\chapter{Současný stav}
-Jako ověření, že vytváření nové aplikace má význam, byly prozkoumány současné možnosti, které si kladou za cíl řešení stejného problému. K dispozici jsou například online nástroje ShareLaTeX a Overleaf. První zmíněný, „Online LaTeX editor snadný k použití s možností spolupráce více autorů“ {cit2}, se sice hned na úvodní stránce chlubí překladem do češtiny, který je ale nekompletní a práce s ním je tak často matoucí, z textů není jasné, co se zrovna děje, co se od uživatele očekává a jakým způsobem má pracovat. K tomu vyžaduje vysoký měsíční poplatek {cit3} za zpřístupnění většiny funkcí. Druhá služba, Overleaf, překlad do češtiny nenabízí vůbec, což není nutné považovat za nedostatek, protože požadavkem není řešení konkrétně pro české prostředí. Chybí však funkce pro procházení změn v historii projektu.
+\input{sections/currentState.tex}
 
-Obě služby trpí omezením, že se nelze dostat k úpravám projektu mimo ně. Uživatel nemůže tvořit ve svém oblíbeném editoru, musí si vystačit s online editorem, který navíc nenabízí žádnou offline variantu.
-
-Alternativním přístupem je třeba verzovací systém Git, jež je zejména pro začátečníky s tímto systémem příliš komplikovaný.
-
-\chapter{Řešení}
-Řešením je nová aplikace, která je schopná běžet na různých cílových zařízení, se systémem Windows nebo Linux, tak, aby vystihla různorodost zařízení členů týmu (systém, editor LaTeXu), ale zároveň nenutila všechny členy k jejímu aktivnímu využívání. Čtyřčlenný tým může vypadat třeba tak, že jeden autor pracuje na svém počítači se systémem Windows s pomocí nové aplikace, podobně další dva členové se systémem Linux a čtvrtý člen s pokročilou znalostí verzovacího systému Git nemusí novou aplikaci používat vůbec a stejně může bez omezení spolupracovat se zbytkem týmu. Aplikace tedy musí být schopná komunikovat se systémem Git, který splňuje požadavek na zálohování a verzování.
+\input{sections/solution.tex}
 
 \chapter{Realizace}
 
