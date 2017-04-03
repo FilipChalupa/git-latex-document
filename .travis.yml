@@ -3,14 +3,12 @@ dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
 script:
-- cd template
-- pdflatex -interaction=nonstopmode -halt-on-error main.tex
-- cd ..
+- pdflatex -interaction=nonstopmode -halt-on-error BP_Chalupa_Filip_2017.tex
 deploy:
   provider: releases
   api_key:
     secure: "ZIzftT33Nxypr6F+yLZtIvII5mMPSJ2nyES77nkSoUD0RPaNfSL6gwQyVMdhQK8xhjQsqOu/MYOBwHbL6K4ttlsVwsS/awTAOXEUV50Smr4Om9K+pn3FJ8OBqEgtNaL9CZrsCUbt6bPSKDQ2MkAkzkiGhIhJL9BBssXaIzZronW/WwdsvASIDDp3sccbRUVTb0GZL9ODF2S0TiEjaAkQoIaGZn3M37zFSvY7/GSsJa4DAv0RseJlytvaKPbwZw+AGmC7hmhaOKpa5s+GqI8F4VFiLgpOZvA+g92oRqQOvjBK4ohtET+ltjKsE0CJp0MW3spLBCapYUs2Gz2yd3CFYffCnL1m/8ilWNihoQlP7AbXwNU3tkfJAjVKaQZtlnetSVbcgbSKdv9ix2/T1J6d6tvrBIX1zoeLYmqSodeHypDCqEd0qULjwKCE9kRPp9j/o5j9t+Q9KfP9haUr90vTD/VjeUKeIfInm/ARTUUMViEgWRfXzzkHPDoBtn2OCmEKE8zmWpMqsbnHl/7vaYYxXC6VZRHqsedo7FnQk5mwsim/P94m8+nmBr8+ZJYr6zqXBg2QRnmdQyrpTgF6c5Ua2kZzovE7yE5Pqf2X5axNJtbcnxtnNMwv3XEmV/qYKYgQ1tWBneRg2cL+lwhA5dM785pAKRThF0ekISv8KChienI="
-  file: template/main.pdf
+  file: BP_Chalupa_Filip_2017.pdf
   skip_cleanup: true
   on:
     tags: true
