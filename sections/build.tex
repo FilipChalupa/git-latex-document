@@ -13,6 +13,10 @@ npm run build-local \# v adresáři dist vytvoří spustitelnou aplikaci
 % @TODO: linky na Appveyor a Travis
 Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases. Nové balíčky jsou k dispozici ke každé oštítkované verzi, o které se strají nástroje pro průběžnou integraci Appveyor a Travis CI.
 
+Tyto dva nástroje byly zvoleny kvůli možnosti zdarma automaticky spouštět skládání testovacích sestavení (buildů), případně ostrých sestavení pro uživatele. Appveyor pak kvůli specializaci na systémy s Windows a Travis na systémy unixové.
+
 Appveyor i Travis jsou propojeni s repozitářem FitGit na GitHubu. S každým novým nahráním změn zdrojových kódů se tyto dva nástroje spustí. Nahrají si k sobě aktualizovaný repozitář, pro který provedou přípazy uvedené v prvním způsobu instalace. Pokud jsou změny označeny štítkem, výslednou aplikaci zabalí do zip archivu s příslušným názvem (FitGit-platforma-verze, kde platforma je windows či linux a verze odpovídá názvu štíku) a nahrají na GitHub do již zmíněné sekce releases. Pokud během tohoto procesu jeden z nástrojů selže, dá o tom vědět vývojáři Aplikace například e-mailovou zprávou a archiv na GitHub nenahraje.
 
 Pokud dojde k nějakému selhání, oba nástroje poskytují detailní výpis, co se na nich spouštělo za příkazy a co vrátily za výsledek. Z této zprávy je možné odvodit, co je se zdrojovými kódy špatně a opravit je.
+
+Balíčky se vytváří pouze pro dvě platformy v jejich 64bitových variantách. V průběhu vývoje Aplikace byly pokusy začlenit i 32bitové varianty a systém macOS, avšak větší počet různých balíčků s různými specifiky vyžadoval vysoké nároky na údržbu skriptů starajících se o jejich automatické vytváření. Z časových důvodů od nich tedy bylo upuštěno.
