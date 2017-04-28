@@ -1,0 +1,37 @@
+\chapter{Návrhy na rozšíření}
+
+Zejména kvůli nedostatkům pro tuto práci klíčové knihovny NodeGit nebylo možné v omezeném čase postihnout veškeré neduhy výsledné aplikace, které byly objeveny během vývoje či při uživatelském testování. Následující přehled by měl navrhnout jejich řešení, případně doplnit Aplikaci o další funkcionalitu, která by aplikaci významně prospěla.
+
+
+\section{Zlepšení stávajících funcionalit}
+
+\subsection{Nezobrazovat příliš obsáhlé změny}
+
+U ručně psaných textů se jedná sice spíše o okrajový problém, avšak u projektů, kde uživatel přidává do projektů například celé knihovny či generované texty, se může stát, že množství těchto textů bude příliš náročné na vypsání do okna aplikace například v detailu commitu. Taková zátěž může způsobit nežádoucí pomalý běh aplikace či její úplné zamrznutí. Bylo by tedy vhodné takový situací předcházet například u větších změn zobrazovat jen kratší název a zbytek jen na vyžádání uživatele například stiskem tlačítka „zobrazit více“.
+
+\subsection{Zobrazovat celou historii}
+
+Obrazovka s historií projektu nyní zobrazuje jen commity do maximálního počtu 250. Tento limit zaručuje u projektů s bohatou historií plynulý chod za cenu toho, že uživatel starší commity nevidí. Vzhledem k tomu, že plynulost je potřeba zachovat, bylo by vhodné uživateli nabídnout aspoň stránkování, aby se nevypisovaly všechny commity naráz, nebo implementovat chytřejší vykreslování, které budí dojem souvislé historie i přes omezení množství commitů, které mohou být v jeden okamžit načteny do grafického rozhraní, které je tím nejslabším článkem při práci s větším množstvím dat.
+
+
+Upozorňovat na commit  podle jazyka (php vs LaTeX)
+Přidat více vysvětlivek
+Lepší/chytřejší průvodce přidáváním projektu
+Diff - problémy s kódováním
+Při integrování zobrazit commity
+
+
+\section{Nové funkcionality}
+Možnost měnit e-mail/jméno
+Syntax highlighting
+Přepínání větví
+Tagování
+Odkazovat na web (hash na github detail)
+Možnost rovnou otevřít vlastní editor
+Detekce, že uživatel má všechny závislosti (Cred. manager, Pageant)
+Hlášení chyb
+Zobrazování obrázků v diffu
+
+
+\section{Ostatní zlepšení}
+Build macOS
