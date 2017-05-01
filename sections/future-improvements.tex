@@ -7,31 +7,102 @@ Zejména kvůli nedostatkům pro tuto práci klíčové knihovny NodeGit nebylo 
 
 \subsection{Nezobrazovat příliš obsáhlé změny}
 
-U ručně psaných textů se jedná sice spíše o okrajový problém, avšak u projektů, kde uživatel přidává do projektů například celé knihovny či generované texty, se může stát, že množství těchto textů bude příliš náročné na vypsání do okna aplikace například v detailu commitu. Taková zátěž může způsobit nežádoucí pomalý běh aplikace či její úplné zamrznutí. Bylo by tedy vhodné takový situací předcházet například u větších změn zobrazovat jen kratší název a zbytek jen na vyžádání uživatele například stiskem tlačítka „zobrazit více“.
+U ručně psaných textů se jedná sice spíše o okrajový problém, avšak u projektů, kde uživatel přidává do projektů například celé knihovny či generované texty, se může stát, že množství těchto textů bude příliš náročné na vypsání do okna aplikace například v detailu commitu. Taková zátěž může způsobit nežádoucí pomalý běh aplikace či její úplné zamrznutí. Bylo by tedy vhodné takovým situacím předcházet. Například u větších změn zobrazovat jen kratší název a zbytek až na vyžádání uživatele například stiskem nějakého tlačítka „zobrazit více“.
 
 \subsection{Zobrazovat celou historii}
 
-Obrazovka s historií projektu nyní zobrazuje jen commity do maximálního počtu 250. Tento limit zaručuje u projektů s bohatou historií plynulý chod za cenu toho, že uživatel starší commity nevidí. Vzhledem k tomu, že plynulost je potřeba zachovat, bylo by vhodné uživateli nabídnout aspoň stránkování, aby se nevypisovaly všechny commity naráz, nebo implementovat chytřejší vykreslování, které budí dojem souvislé historie i přes omezení množství commitů, které mohou být v jeden okamžit načteny do grafického rozhraní, které je tím nejslabším článkem při práci s větším množstvím dat.
+Obrazovka s historií projektu nyní zobrazuje jen commity do maximálního počtu 250. Tento limit zaručuje u projektů s bohatou historií plynulý chod za cenu toho, že uživatel starší commity nevidí. Vzhledem k tomu, že plynulost je potřeba zachovat, bylo by vhodné uživateli nabídnout alespoň stránkování, aby se nevypisovaly všechny commity naráz, nebo implementovat chytřejší vykreslování, které by budilo dojem souvislé historie i přes omezení množství commitů, které mohou být v jeden okamžit načteny do grafického rozhraní, které je tím nejslabším článkem při práci s větším množstvím dat.
 
+\subsection{Chytřejší upozorňování na vytvoření commitu}
 
-Upozorňovat na commit  podle jazyka (php vs LaTeX)
-Přidat více vysvětlivek
-Lepší/chytřejší průvodce přidáváním projektu
-Diff - problémy s kódováním
-Při integrování zobrazit commity
+Aktuální upozorňovací mechanizmus nebere v potaz hlubší specifika konkrétního projektu. Kromě analýzy počtu přidaných a odebraných řádků a změněných souborů, by bylo vhodné například u projektů psaných zejména v \LaTeX{u} sledovat počet změněných kapitol (chapter) či sekcí (section), aby autor pro dosažení ideálního commitu nezasahoval do příliš mnoha nesouvislých částí projektu. Podobný princip by bylo možné implementovat i pro jiné, například programovací, jazyky. V objektově orientovaných se vybízí přirovnání kapitol k třídám a sekcí k metodám. Představou ideálního commitu budiž takový, který neobsahuje více nesouvislých změn.
+
+\subsection{Průvodce ovládáním}
+
+Uživatelské rozhraní spoléhá na silnou intuici či dřívější zkušenost. Malé množství popisků a terminologie typická pouze pro Git (například „commit“) nikterak neulehčují uživateli orientaci v Aplikaci. Řešením tohoto neduhu by bylo doplnění více popisků ke většině prvků. Popisky by mohli mohly být představeny uživateli ve dvou podobách. První variantou by byly takové, které se zobrazí pouze při prvním setkání uživatele s daným prvkem. Druhé pak stručnější stálé.
+
+\subsection{Přidávání projektu}
+
+% @TODO: link to github, bitbucket, gitlab
+Kromě lépe formulovaných a obsáhlejších popisků v modálním okně pro přidávání nového projektu by jistě usnadnily ovládání ukázky typických zástupců online služeb pro správu Gitových repozitářů (například GitHub, Bitbucket, GitLab), jak se v těchto službách zakládají nové projekty a kde je adresa pro remote, která se využívá v Aplikaci právě při přidávání projektu z URL.
+
+\subsection{Stálé menu}
+
+Při větších velikostech hlavního okna, na širších displayích, zůstává větší míra plochy nevyužita. Vzhledem k tomu, že v zasouvacím menu se nachází spoustu pro užívání Aplikace kritických položek, uživatelský zážitech by zlepšilo, kdyby menu zůstalo stále vysunuté po boku ostatního obsahu.
+
+\subsection{Podpora kódování}
+
+% @TODO: obrázek na ukázku
+Aplikace pro zobrazování textů používá kódování UTF-8, což může způsobit problémy při zobrazování změn v souborech, které používají kódování jiné. Vzhledem k tomu, že UTF-8 je rozšířením ASCII, aktuálně tento nedostatek nezpůsobuje úplnou nečitelnost, ale některé speciální znaky, v češtině zejména písmena s háčkem nebo čárkou, jsou nahrazena zástupným symbolem s otazníkem. Pro takové případy by bylo vhodné do aplikace doplnit detekci kódování upravených souborů a jejich zobrazování patřičně opravit.
+
+\subsection{Bohatší přehled při začleňování změn}
+
+Obrazovka pro začlenění nových změn obsahuje pouze přehled samotných pozměněných souborů. Užitečnou informací by mohlo pro uživatele být, kdy byly změny vytvořeny, kdo je jejich autorem a z jakých commitů se skládají. Detailnější přehled by vedl k rychleší orientaci při začleňování a lepšímu porozumění konkrétních úprav.
+
+\subsection{Podpis na Windows}
+
+Z bezpečnostních důvodů kontroluje systém Windows podpis autora aplikaci. Přidávání podpisu není zatím v automatické distribuci balíčků začleněno. Uživateli je tak sestémem doporučeno, aby Aplikaci neužíval, což je nežádoucí chování a může vést k tomu, že potenciální uživatel Aplikaci opravdu nespustí. Řešením je tedy registrace vývojáře a začlenění podepisování do vytváření předpřipravených balíčků.
 
 
 \section{Nové funkcionality}
-Možnost měnit e-mail/jméno
-Syntax highlighting
-Přepínání větví
-Tagování
-Odkazovat na web (hash na github detail)
-Možnost rovnou otevřít vlastní editor
-Detekce, že uživatel má všechny závislosti (Cred. manager, Pageant)
-Hlášení chyb
-Zobrazování obrázků v diffu
+
+\subsection{Změna jména a e-mailu}
+
+% @TODO: ukázka git příkazu
+Zejména noví uživatelé Gitu nemají často nastaveno jméno a e-mail. Tyto údaje se používají při vytváření commitu a slouží k identifikaci autora. Správně nastavené jméno a heslo například zpřehledňuje historii. Uživatele bez jména a e-mailu by tedy bylo vhodné na tuto skutečnost upozornit a odkázat například do nastavení, kde by jméno a e-mail bylo možné změnit.
+
+\subsection{Zvýraznění syntaxe}
+
+% @TODO: link https://codemirror.net/
+Při volbě vhodných nástrojů pro vývoj Aplikace byl zahrnut i požadavek na možnost zvýrazňování syntaxe, předně \LaTeX{ové}, například na obrazovce s detailem commitu. Pro JavaScript je k dispozici nepřeberné množství knihoven zajišťujícíh tuto funkcionalitu. Při jejich studii byl zvolen CodeMirror jako nejatraktivnější vzhledem k vestavěné podpoře \LaTeX{u} a možnosti zobrazovat změny v souborech.
+
+\subsection{Náhled obrázků}
+
+Přehled změn zobrazuje pouze textové úpravy. U binárních souborů se ukáže pouze jejich název a typ změny (přidán, změněn, odstraněn). V případě obrázků se tedy vybízí zobrazit navíc i jejich náhled, pro případ, že si uživatel obsah například nepamatuje nebo ho nikdy neviděl, protože pochází od jiného autora.
+
+\subsection{Otevření editoru}
+
+Pro rychlejší práci se soubory by byla užitečná u každé zmínky souboru projektu možnost otevřít ho rovnou ve vlastním editoru, který si uživatel nastavil v operačním systému, aby mohl více času trávit v prostředí, ve kterém samotný osah tvoří. Pro soubory a jejich stavy, které jsou dostupné pouze v historii, by se mohly tvořit dočasné verze, které by nebylo možné upravovat. Pro tuto funkcionalitu bylo zahájeno zkoumání, jehož výsledkem bylo odložení implementace kvůli příliš rozličnému chování různých operačních systému.
+
+\subsection{Označování commitů}
+
+V některých projektech bývá zvykem používat takzvané tagy, značky, kterými je možné označit libovolný commit doplňujícím textem pro snazší orientaci v historii či pro doplnění commitu o další informaci. Například v repozitáři se zdrojovými kódy Aplikace se tagy využívájí pro označení commitů, pro které se mají automaticky vytvořit předpřipravené balíčky pro snadné stažení. Pro podporu tagů je potřeba minimálně v obrazovce historie zobrazovat již existující tagy a přidat možnost jejich vytvoření pro libovolný commit, zároveň doplnit logiku pro jejich synchronizaci.
+
+\subsection{Změna větve}
+
+Další často využívanou funkcí Gitu při práci zejména ve vícech lidech je přepínání větví. Jejich přehled a změna je rozpracován v zobrazení detailu projektu, ale kvůli současné nedokončé implementaci možnosti začlenit větev do větve jiné je tento přehled zatím skryt. Doplnění práce s větvemi by také vyžadovalo změnit přístup zobrazovaní historie, který momentálně s cílem zpřehlednění strukturu větví potlačuje.
+
+\subsection{Kontrola závislostí}
+
+% @TODO: link na https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage, pageant
+Aplikace se spoléhá na některé další programy, které musí být v systému nainstalovány a správně nastaveny. Pro správné fungování by měla Aplikace kontrolovat, že všechny tyto závislosti jsou dostupné. Jedná se zejména o Git a jeho podpůrné nástroje například pro správu přístupových údajů, Credential Storage a Pageant. V případě nedostupnosti či špatné konfigurace by měla Aplikace na tuto skutečnost uživatele upozornit s nápovědou možného řešení.
+
+\subsection{Propojení se vzdálenými servery}
+
+% @TODO: co s issues?
+Servery jako GitHub, Bitbucket, GitLab nabízejí vlastní bohaté rozhraní na správu projektů. Některé funkce představují pouze alternativu (detail commitu, základní historie) a jiné doplněk k Aplikaci (issues). Toto propojení není vhodné skrývat, nýbrž podporovat, protože uživateli nabízí více pomocných nástrojů pro snadnější práci na projektu. Kromě odkazování se na tyto servery při přidávání projektů by měla podobná vazba existovat i mezi jednotlivými commity, kdy pomocí hashe commitu je snadné automaticky složit odpovídající URL pro běžně používané servery a nabídnout uživatelovi tedy přechod na přání do internetového prohlížeče.
+
+\subsection{Hlášení chyb uživatelovi}
+
+% @TODO: link na nodegit error codes
+Například během připojování ke vzdálenému serveru může dojít k mnoha různým chybám, o kterých nyní není uživatel nikterak informován. Často se jedná o chyby, které se týkají zamezení přístupu k projektu, protože má uživatel špatně nastavené heslo, špatný nebo žádný klíč pro ssh, přístup mu nebyl nikdy udělen, není připojen k internetu apod. O chybách je možné uživatele informovat třeba pomocí systémových upozornění či komponentou Snackbar. Je však nutné se najdříve vypořádat se zpracováním chyb, které jsou knihovnou NodeGit často předávány pouze v textové podobě bez dokumentace; na strojově čitelnější variantě se pracuje. Další hůře zpracovatelné chyby jsou přímo od vzdálených serverů, které také nejsou možné zobrazit uživateli bez předzpracování, protože nejsou česky, pro nezkušeného uživatele nemají dostatečnou informační hodnotu a formou se liší napříč různými servery, různé texty pro stejné chyby.
+
+\subsection{Hlášení chyb vývojáři}
+
+% @TODO: https://github.com/Onset/FitGit/issues/56 a https://libgit2.github.com/
+Za běhu Aplikace může dojít i k chybám, které nemusí oznámením uživateli prospět. Typicky jsou to takové, jež jsou způsobené chybou v kódu, uživateli nejsou zřejmé, neomezují další chod Aplikace. Nyní se takové události zapisují do souboru na uživatelově počítači. Pro možnou analýzu těchto dat je tedy nutné informovat uživatele o jejich extistenci a umožnit jim snadné sdílení s vývojářem třeba e-mailem nebo je odesílat automaticky. Za zvážení stojí i rozhodnutí, jak se vypořádat s chybami, které jsou mimo kontrolu Aplikace. Během vývoje došlo jednou k selhání knihovny libgit2 napsané v jazyce C, jež po svém pádu nevrátila řízení JavaScriptu, který by chybu mohl zapsat do příslušného souboru. Není vyloučeno, že podobná selhání se mohou opakovat.
+
+\subsection{Ukázkový projekt}
+
+Pro rychlejší pochopení uživatelského rozhraní a možnost vyzkoušet si funkce na projektu bez nutnosti vlastního účtu na některé ze služeb poskytujících správu repozitářů by bylo užitečné po prvním spuštění Aplikace nabídnout uživatelovi ukázkový projekt, kde by si mohl vyzkoušet, jak s projektem pracovat či otestovat, jestli mu Aplikace vyhovuje.
 
 
 \section{Ostatní zlepšení}
-Build macOS
+
+\subsection{Verze pro macOS}
+
+Electron a NodeGit, jenž jsou základním stavebním kamenem Aplikace, jsou otevřeny pro široké spektrum operačních systémů, do kterého patří i macOS. Vzhledem k tomu, že Aplikace není závislá na ničem, co by princip této dostupnosti nesdílelo, přímo se vybízí tuto platformu začlenit do automatického procesu vytváření předpřipravených balíčků. Dokonce v některých fázích vývoje aplikace k této automatizaci docházelo, avšak kvůli některým odlišnostem od ostatních systémů od toho bylo upuštěno kvůli příliš rychlým iteracím při vývoji, kdy tím pádem bylo potřeba udržovat průběžnou integraci pro tři systémy, což v době rapidního vývoje jevilo časově nevýhodné. Nyní je Aplikace v ustálenějším stavu a začlenění macOS by tedy nemělo způsobovat větší komplikace.
+
+\subsection{A další}
+
+Předchozí body jsou pouze výňatkem těch pravděpodobně nejzásádnějších změn a rozšíření, které by Aplikaci pomohly k úspěchu mezi možnými uživateli. Podobných zlepšení je více a některé mohou teprve vyvstat po rozšíření mezi více lídí. Mimo to se i stále vyvýjí prostředí, se kterým Aplikace pracuje. Operační systémy, Git, Electron, NodeGit, GitHub, Bitbucket, GitLab se stále posouvají kupředu, tudíž pro optimální fungování je potřeba s nimi držet krok.
