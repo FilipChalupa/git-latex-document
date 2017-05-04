@@ -2,6 +2,7 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
+- pip install pygmentize
 script:
 - pdflatex -interaction=nonstopmode -shell-escape -halt-on-error BP_Chalupa_Filip_2017.tex
 deploy:
