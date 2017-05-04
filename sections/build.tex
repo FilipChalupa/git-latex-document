@@ -4,11 +4,25 @@
 % @TODO: link na Node.js
 Aplikaci je možné na cílové zařízení nainstalovat dvěma způsoby. Prvním je stažení například pomocí Gitu ve formě zdrojových kódů, které jsou dostupné v repozitáři Onset/FitGit na GitHubu. Pro kompilaci a spuštění zdrojových kódů je potřeba nainstalovat Node.js, případně nástroje pro kompilaci jazyka C. Tento postup je shodný pro platformu Windows, macOS a linuxové distribuce. Kompilace a následné spuštění se poté provádí tako:
 
-% @TODO: syntaxt highlighting code
-git clone git@github.com:Onset/FitGit.git \&\& cd FitGit \# stáhne repozitář na lokální disk
-npm install \# nainstaluje některé závislosti pro běh Aplikace
-npm run prebuild \# nainstaluje další závislosti a zkompiluje knihovnu NodeGit
-npm run build-local \# v adresáři dist vytvoří spustitelnou aplikaci
+\FloatBarrier
+\begin{figure}[h]
+	\begin{minted}[]{bash}
+# stáhne repozitář na lokální disk
+git clone git@github.com:Onset/FitGit.git
+cd FitGit
+
+# nainstaluje některé závislosti pro běh Aplikace
+npm install
+
+# nainstaluje další závislosti a zkompiluje knihovnu NodeGit
+npm run prebuild
+
+# v adresáři dist vytvoří spustitelnou aplikaci
+npm run build-local
+	\end{minted}
+	\caption{Spuštění ze zdrojových kódů}
+\end{figure}
+\FloatBarrier
 
 % @TODO: linky na Appveyor a Travis
 Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases. Nové balíčky jsou k dispozici ke každé oštítkované verzi, o které se strají nástroje pro průběžnou integraci Appveyor a Travis CI.
