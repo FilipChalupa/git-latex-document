@@ -8,7 +8,7 @@ NodeGit je knihovna pro programovací jazyk JavaScript se záměrem zpřístupni
 % @TODO: https://webpack.github.io/ http://gulpjs.com/ https://gruntjs.com/ https://facebook.github.io/react/ https://facebook.github.io/react/docs/introducing-jsx.html
 Pro větší projekty psané v JavaScriptu je běžné využití některého z nástrojů pro správu kódu, jeho strukturu, rozšíření. Typickými zástupci jsou Gulp, Grunt a Webpack. Vzhledem k velké popularitě a podpoře Reactu byla Aplikace vyvýjena pomocí Webpacku, což umožňovalo například zjednodušenou syntaxy JSX, která významně zpřehledňuje zápisy šablon pro React, jež se více podobají zápisu v HTML.
 
-\begin{figure}[h]
+\begin{listing}[ht]
 \begin{minted}[]{javascript}
 e(
 	Card,
@@ -29,10 +29,10 @@ e(
 	)
 )
 \end{minted}
-\caption{Zápis pro vykreslení komponenty Reactu v běžném JavaScriptu}
-\end{figure}
+\caption[Komponenta v JavaScriptu]{Zápis pro vykreslení komponenty Reactu v běžném JavaScriptu}
+\end{listing}
 
-\begin{figure}[h]
+\begin{listing}[ht]
 \begin{minted}[]{javascript}
 <Card key={i} style={style}>
 	<CardTitle
@@ -43,23 +43,23 @@ e(
 	/>
 </Card>
 \end{minted}
-\caption{Zápis pro vykreslení komponenty Reactu v JSX}
-\end{figure}
+\caption[Komponenta v JSX]{Zápis pro vykreslení komponenty Reactu v JSX}
+\end{listing}
 
-\begin{figure}[h]
+\begin{listing}[ht]
 	\begin{minted}[]{javascript}
 const Card = require('material-ui/Card').Card
 const CardTitle = require('material-ui/Card').CardTitle
 	\end{minted}
-	\caption{Závislost na Card a CardTitle v běžném JavaScriptu}
-\end{figure}
+	\caption[Závislosti v JavaScriptu]{Závislost na Card a CardTitle v běžném JavaScriptu}
+\end{listing}
 
-\begin{figure}[h]
+\begin{listing}[ht]
 	\begin{minted}[]{javascript}
 import { Card, CardTitle } from 'material-ui/Card'
 	\end{minted}
-	\caption{Závislost na Card a CardTitle v JSX}
-\end{figure}
+	\caption[Komponenta v JSX]{Závislost na Card a CardTitle v JSX}
+\end{listing}
 
 \FloatBarrier
 
