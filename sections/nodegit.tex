@@ -153,3 +153,7 @@ NodeGit nepodporuje správce klíčů OpenSSH na Windows. Je tedy nutné doinsta
 
 % @TODO: https://curl.haxx.se/libcurl/
 Během vývoje došlo k několika chybám na linuxové platformě týkající se chyby libcurl. Zatím se problém neopakuje. Každopádně závislost NodeGitu na správné konfiguraci platformy je kritická a nevylučuje se, že podobné selhání mohou nastat znovu.
+
+\section{Řešení}
+
+Zmíněné problémy výrazně ovlivňují stabilitu Aplikace, její funkcionality a možnost dalšího rozvoje. Je vhodné zvážit, jestli závislost na NodeGitu odstranit a nahradit třeba systémovým volání příkazu \mintinline{bash}{git --porcelain}, jenž poskytuje strojově čitelné odpovědi na všechny potřebné operace.
