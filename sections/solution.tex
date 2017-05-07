@@ -1,2 +1,31 @@
 \chapter{Řešení}
-Řešením je nová aplikace, která je schopná běžet na různých cílových zařízení, se systémem Windows nebo Linux, tak, aby vystihla různorodost zařízení členů týmu (systém, editor LaTeXu), ale zároveň nenutila všechny členy k jejímu aktivnímu využívání. Čtyřčlenný tým může vypadat třeba tak, že jeden autor pracuje na svém počítači se systémem Windows s pomocí nové aplikace, podobně další dva členové se systémem Linux a čtvrtý člen s pokročilou znalostí verzovacího systému Git nemusí novou aplikaci používat vůbec a stejně může bez omezení spolupracovat se zbytkem týmu. Aplikace tedy musí být schopná komunikovat se systémem Git, který splňuje požadavek na zálohování a verzování.
+Řešením je nová aplikace, dále jen Aplikace, která je schopná běžet na různých cílových zařízení, se systémem Windows nebo Linux, tak, aby vystihla různorodost zařízení členů týmu (operační systém, editor LaTeXu), ale zároveň nenutila všechny členy k jejímu aktivnímu využívání. Čtyřčlenný tým může vypadat třeba tak, že jeden autor pracuje na svém počítači se systémem Windows s pomocí Aplikace, podobně další dva členové se systémem Linux a čtvrtý člen s pokročilou znalostí verzovacího systému Git nemusí Aplikaci používat vůbec a stejně může bez omezení spolupracovat se zbytkem týmu. Aplikace tedy musí být schopná komunikovat se systémem Git, který splňuje požadavek na zálohování a verzování.
+
+\section{Požadavky}
+
+\begin{itemize}
+	\item Podpora operačních systémů Windows a běžných linuxových distribucí (Ubuntu, Debian, Fedora, openSUSE, Linux Mint),
+	\item verzování pomocí nástroje Git,
+	\item nezávislost na Aplikaci, uživatel by měl mít kdykoliv možnost přejít na jiný nástroj pro správu Gitu,
+	\item zálohování na vzdálené servery jako jsou GitHub, Bitbucket, fakultní GitLab,
+	\item kompatibilita s projekty psanými \LaTeX{u},
+	\item automatické nahrávání a stahování změn,
+	\item uživatelské rozhraní:
+		\begin{itemize}
+			\item správa projektů (přidat, odebrat, zobrazit přidané),
+			\item detail projektu, kde se nachází v místním systému a na jaký vzdálený server je zálohovaný,
+			\item při přidávání projektu umožnit volbu mezi již existujícím repozitářem v souborovém systému či stažením ze vzdáleného serveru,
+			\item historie projektu se zobrazením přidaných a odebraných řádků ve změněných souborech,
+			\item podpora ověření uživatele na vzdáleném serveru pomocí https i ssh,
+			\item u projektů s uživatelským jménem a heslem možnost lokální změny,
+			\item v případě nových úprav v pracovní složce projektu provést uživatele vytvářením commitu,
+			\item automaticky zjišťovat nové změny na vzdáleném serveru a uživatele na ně upozorňovat,
+			\item překlad do češtiny a angličtiny s možným rozšířením.
+		\end{itemize}
+\end{itemize}
+
+
+\section{Zvolené nástroje}
+
+% @TODO: https://electron.atom.io/ http://www.nodegit.org/ https://facebook.github.io/react/ http://redux.js.org/
+Pro implementaci řešení byl zvolen jazyk JavaScript, který je nezávislý na operačním systému a je s ním možné tvořit uživatelská rozhraní i se zbylou aplikační logikou. Pro spouštění Aplikace na všech platformách a poskytnutí přístupu k systémovým funkcím, vykreslování okna je využíván Electron, jenž je základem i mnoha úspěšných produktů, například GitKrakenu, Slacku pro desktop, Visual Studia Code. Další funkcionalitu doplňuje NodeGit, JavaScriptová knihovna pro práci s Gitem, a React v kombinaci s Reduxem pro vykreslování uživatelského rozhraní a udržování jeho stavu.
