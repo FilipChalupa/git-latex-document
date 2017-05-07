@@ -1,0 +1,58 @@
+\chapter{Testování}
+
+Během vývoje byly prováděny průběžně dva typy testování, jejich účelem byla kontrola, že se Aplikace ubírá správným směrem, nedochází k rozbití již hotové funcionality, rozhraní je pochopitelné pro uživatele a Aplikace funguje na všech cílových plaformách.
+
+\section{Automatické}
+
+% @TODO: https://www.appveyor.com/ https://travis-ci.org/ https://www.npmjs.com/package/electron-builder
+Jedním z prvních kroků bylo nastavení testovacích služeb Appveyor a Travis CI. Zdrojové kódy byly na tyto služby automaticky průběžně odesílány. Na nich pak probíhala sada testů zabývajících se zejména zkouškou, že Aplikace lze složit do podoby spustitelného programu. Typicky se jednalo o kontrolu, že jsou k dispozici všechny balíčky závislostí, že kód v jazyce C se kompiluje se správnými parametry a že electron builder pro tvorbu předpřipravených balíčku je spávně nakonfigurovaný, dostává správná data z předchozích procesů.
+
+\section{Uživatelské}
+
+Narozdíl od automatických testů, které byly během práce na Aplikaci spouštěny přibližně každou hodinu, zahrnoval proces kontroly stavu i test manuální zhruba jednou týdně. Většinou se jednalo o sérii průchodů jedním uživatelem skrz rozhraní Aplikace. Množství průchodů se zvyšovalo s množstvím implementovaných funkcí. Po naprogramování podpory pro spolupráci více uživatelů zároveň byly několikrát provedeny i testy ve skupině (tři lidé, čtyři instance Aplikace) se složitějšími scénáři zahrnujícími paralelní práci na stejném projektu. Cílem těchto testů bylo zejména otestování, že rozhraní je pro uživatele pochopitelné, neobsahuje chyby, které by mohly vést k pádu Aplikaci či uvedení do nekonzistentního stavu, rozhraní reaguje a reaguje správně na uživatelské akce.
+
+\subsection{Ukázka testovaných scénářů}
+
+\begin{enumerate}
+	\item Commit
+	\begin{enumerate}
+		\item Vytvoř nový repozitář na Bitbucketu.
+		\item Přidej tento projekt do Aplikace.
+		\item Vytvoř tři prázdné soubory.
+		\item Vyčkej na systémové upozornění vybízející k vytvoření commitu.
+		\item Vytvoř commit osahující všechny nové soubory a popiš ho zprávou obsahující háčky a čárky.
+		\item Zkontroluj, že na obrazovce \uv{Historie} je commit do pár vteřit označený jako nahraný na vzdálený server (levý sloupec).
+		\item Zopakuj předchozí body pro GitHub a GitLab, pro ověření přes HTTPS i SSH.
+	\end{enumerate}
+	\item Začlenit změny
+	\begin{enumerate}
+		\item U projektů z předchozího bodu vytvoř nové změny ve webovém rozhraní.
+		\item Vyčkej na systémové upozornění o dostupnosti nových změn.
+		\item Rozklikni ho.
+		\item Až přejde obrazovka \uv{Začlenit změny} do popředí, zkontroluj, že změny odpovídají těm z webového rozhraní.
+		\item Začleň změny.
+		\item Zkontroluj, že nové změny se projevily v adresáři projektu.
+	\end{enumerate}
+	\item Změna hesla
+	\begin{enumerate}
+		\item Přidej nový projekt z existujícího adresáře, který využívá ověření přes HTTPS.
+		\item Vytvoř nějaký commit o zkontroluj, že se nahrál na vzdálený server.
+		\item Na vzdáleném serveru změn heslo k používanému účtu.
+		\item Vytvoř další commit.
+		\item Vyčkej na systémové upozornění vyzývající k opravě hesla.
+		\item Rozklikni ho.
+		\item Na obrazovce detailu projektu změň heslo na nové.
+		\item Zkontroluj, že poslední commit se již nahrál.
+	\end{enumerate}
+	\item Spolupráce
+	\begin{enumerate}
+		\item Ve skupině několika lidí s různými operačními systémy vytvořte společný repozitář.
+		\item Přidejte si ho každý do Aplikace.
+		\item Zkoušejte vytvářet různé commity, které upravují stejné soubory.
+		\item Začleňujte změny ostatních.
+		\item Kontrolujte v historii, že vaše změny se sdílí s ostatními.
+		\item Kontrolujte v adresáři projektu, že změny ostatních se projevují.
+	\end{enumerate}
+\end{enumerate}
+
+Programové chyby Aplikace se zapisují do souborů v uživatelském adresáři v podadresáři s názvem Aplikace. V případě komplikací, objevení problému zašlete tyto soubory autorovi Aplikace a popiště vaše poslední akce před tím, než se chyba projevila.
