@@ -1,7 +1,7 @@
 \chapter{NodeGit}
 
 % @TODO: link na http://www.nodegit.org/ a https://libgit2.github.com/ a https://github.com/libgit2/libgit2#language-bindings https://github.com/libgit2/rugged http://www.pygit2.org/ https://github.com/libgit2/php-git
-NodeGit je knihovna pro programovací jazyk JavaScript se záměrem zpřístupnit základní funkce Gitu implementované projektem libgit2 v jazyce C. Libgit2 se hojně využívá pro široké spektrum i jiných programovacích jazyků, například pro jazyk Ruby na něm staví Rugged, pro .NET LibGit2Sharp, Python pygit2, PHP php-git a spoustu dalších. Vážnost projektu nepřestavují jen knihovny všemožných jazyků, ale i velké firmy, která na tuto implementaci spoléhají; jedná se například o Microsoft, Bitbucket, Canonical. Konkrétně u JavaScriptové nadstavby pak GitKraken či GitHub. Nehledě na velkou rozšířenost, libgit2 a v souvislosti s ním i NodeGit osahují jisté neduhy, které byly objeveny při vývoji Aplikace a jim se bude tato kapitola věnovat. Některé jsou již nahlášené v příslušných repozitářích jako bug, ostatní jsou specifické pro tuto bakalářskou práci.
+NodeGit je knihovna pro programovací jazyk JavaScript se záměrem zpřístupnit základní funkce Gitu implementované projektem libgit2 v jazyce C. Libgit2 se hojně využívá pro široké spektrum i jiných programovacích jazyků, například pro jazyk Ruby na něm staví Rugged, pro .NET LibGit2Sharp, Python pygit2, PHP php-git a spoustu dalších. Vážnost projektu nepředstavují jen knihovny všemožných jazyků, ale i velké firmy, která na tuto implementaci spoléhají; jedná se například o Microsoft, Bitbucket, Canonical. Konkrétně u JavaScriptové nadstavby pak GitKraken či GitHub. Nehledě na velkou rozšířenost, libgit2 a v souvislosti s ním i NodeGit osahují jisté neduhy, které byly objeveny při vývoji Aplikace a jim se bude tato kapitola věnovat. Některé jsou již nahlášené v příslušných repozitářích jako bug, ostatní jsou specifické pro tuto bakalářskou práci.
 
 \section{Webpack}
 
@@ -92,10 +92,10 @@ Na obrazovce uživatelského rozhraní Aplikace pro vytvoření nového commitu 
 
 \subsection{Odebrání smazaného souboru}
 
-NodeGit poskytuje pro přidávání do a odebírání z připravených položek (staging area) dvě metody, \mintinline{javascript}{Index.add(path)} a \mintinline{javascript}{Index.remove(path)}. Obě metody přijímají přijímají jako argument cestu, řetězec znaků, které určují polohu souboru v lokálním souborovém systému. V obou případech dochází k chybě při manipulaci se souborem, který se v systému již nenachází. Pomocí těchto metod tedy nejde pracovat s přidávání a odebíráním neexistujících souborů na a ze stage. Alternativu NodeGit nenábízí. Řešením je tedy systémové volání v JavaScriptu, které umožňuje přístup k příkazovému řádku, na které lze spouště příkazy \mintinline{bash}{git}. Pro fungování tohoto postupu je nutná instalace programu git a přidání do systémové cesty pro spustitelné programy na zařízení uživatele.
+NodeGit poskytuje pro přidávání do a odebírání z připravených položek (staging area) dvě metody, \mintinline{javascript}{Index.add(path)} a \mintinline{javascript}{Index.remove(path)}. Obě metody přijímají jako argument cestu, řetězec znaků, které určují polohu souboru v lokálním souborovém systému. V obou případech dochází k chybě při manipulaci se souborem, který se v systému již nenachází. Pomocí těchto metod tedy nejde pracovat s přidávání a odebíráním neexistujících souborů na a ze stage. Alternativu NodeGit nenábízí. Řešením je tedy systémové volání v JavaScriptu, které umožňuje přístup k příkazovému řádku, na které lze spouště příkazy \mintinline{bash}{git}. Pro fungování tohoto postupu je nutná instalace programu git a přidání do systémové cesty pro spustitelné programy na zařízení uživatele.
 
 \FloatBarrier
-\begin{figure}[h]
+\begin{figure}[ht]
 	\begin{minted}[]{javascript}
 const exec = require('child-process-promise').exec
 exec(`cd ${projectPath} && git add "${filePath}"`))
@@ -104,7 +104,7 @@ exec(`cd ${projectPath} && git add "${filePath}"`))
 \end{figure}
 \FloatBarrier
 
-\subsection{Výpis neznámých}
+\subsection{Výpis neznámých souborů}
 
 % @TODO: http://www.nodegit.org/api/repository/ https://github.com/nodegit/nodegit/tree/master/examples
 Se smazanými soubory má problémy i metoda na zjištění změněných souborů \mintinline{javascript}{Repository.getStatus()}. Pro smazané, případně přejmenované, soubory vrací neúplná data, se kterými není možné dále pracovat. Stejně jako v předchozím bodě, dokumentace a ukázky NodeGitu nepočítají s odstraněnými soubory. V tomto případě je však mezi uživateli známo náhradní řešení, které pomocí metody \mintinline{javascript}{Diff.indexToWorkdir(...)} vyhledá všechny změněné neignorované soubory či adresáře a vrátí jejich cesty, se kterými lze dále snadno pracovat pomocí systémových volání \mintinline{bash}{git add path} či \mintinline{bash}{git reset HEAD path}.
@@ -115,18 +115,41 @@ Během slučování stavu na vzdáleném serveru a stavu v lokálním repozitá�
 
 \section{Autentizace}
 
+Velice problematické bylo ověřování uživatele na vzdálených serverech z několika důvodů, rozebraných v následujících podkapitolách.
+
 \subsection{Vzdálené servery}
 
-% @TODO
+GitHub, Bitbucket i GitLab mají odlišné odpovědi v případě, že se k nim snaží připojit někdo s navalidními přihlašovacími údaji. Vzhledem k tomu, že knihovna NodeGit poskytuje přístup pouze k textové podobně těchto odpovědí, je složité na ně programově reagovat. Kvůli tomu, že jsou v angličtině a nejsou typicky určené pro nezkušené uživatele, není možné je jen zobrazit a nechat jejich řešení na uživateli.
+
+Zatím byly vypozorovány tyto situaci, při kterých dochází k zamítnutí:
+
+\begin{itemize}
+	\item uživatel poskytl špatné přihlašovací údaje,
+	\item uživatel nemá správně nastaveného agenta pro správu SSH klíčů (na Windows Pageant),
+	\item uživateli nebyl nikým udělen přístup do repozitáře,
+	\item uživatel byl zablokován kvůli několika nezdařeným pokusů o autentizaci (tento stav byl odhalen u Bitbucketu, který pro odblokování vyžaduje přihlášení přes webové rozhraní, podobně blokuje i GitLab).
+\end{itemize}
 
 \subsection{Uložiště přístupových údajů}
 
-% @TODO
+% @TODO: https://git-scm.com/docs/git-credential-store
+Pro ukládání přístupových údajů pro HTTPS spojení využívá Aplikace standardní funkce Gitu, Credential Store. Tato funkce však nezaručuje, že údaje poskytne vždy a že jejich změnu si zapamatuje. Není tedy vhodné se na ni spoléhat. Jako dočasné řešení je přimět uživatele spustit příkaz pro nastavení trvalého ukládání přihlašovacích údajů na disk.
+
+\FloatBarrier
+\begin{listing}[ht]
+	\begin{minted}[]{bash}
+git config --global credential.helper store
+	\end{minted}
+	\caption{Nastavení ukládání přístupových údajů na disk}
+\end{listing}
+\FloatBarrier
 
 \subsection{Správce klíčů pro SSH}
 
-% @TODO
+% @TODO: https://www.openssh.com/
+NodeGit nepodporuje správce klíčů OpenSSH na Windows. Je tedy nutné doinstalovat alternativu Pageant. Navíc je o neběžícím agentu uživatele složité informovat, protože NodeGit tento stav nerozlišuje a poskytuje stejná data i v případě, že Pageant běží, ale pro konkrétní server neposkytuje klíče.
 
 \subsection{cURL}
 
-% @TODO
+% @TODO: https://curl.haxx.se/libcurl/
+Během vývoje došlo k několika chybám na linuxové platformě týkající se chyby libcurl. Zatím se problém neopakuje. Každopádně závislost NodeGitu na správné konfiguraci platformy je kritická a nevylučuje se, že podobné selhání mohou nastat znovu.
