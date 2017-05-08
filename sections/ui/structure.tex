@@ -38,10 +38,19 @@ V případě, že uživatel provedl v aktivním projektu nové změny, které ne
 
 Náhled změn obsahuje názvy souborů, které se změnily s popiskem, o jakou změnu se jedná. V popisku se tak často objevuje například informace, že soubor byl nově vytvořen, upraven, přejmenován či odstraněn. Pokud se jedná o textový soubor se změněným obsahem, je popis doplněn i o seznam přidaných a odebraných řádků. Řádky jsou označené čísly, jež reprezentují číslo řádku před či po změně v souboru, znaménkém, kde plus symbolizuje nový řádek a minus odebraný, stejně tak zelené pozadí pro nový a červené pro odebraný, a doplněné samotným obsahem řádku.
 
-Každý projekt má přehled historie, což jen jednosloupcový či dvousloupcový seznam commitů na hlavní větvi. V levém sloupci se zobrazují commity, které jsou nahrané na vzdáleném serveru, případně jejich poslední stav před ztrátou spojení se vzdáleným serverem. Commity, které jsou zvýrazněné pouze červenou barvou, nejsou promítnuté do souborů, na nichž uživatel aktuálně pracuje. V pravém sloupci se zobrazují commity, které zatím nejsou nahrané na vzdálený server a nejsou tudíž zazálohované a sdílené s ostatními autory. Nejnovější se zobrazují nejvýše. Délka historie je omezena na 250 položek, protože při vyšších počtech ztrácí Aplikace rychlou odezvu. Kliknutím na libovolný commit lze zobrazit jeho detail. Tento detail je hodně podobný náhledu při vytváření commitu. Je akorát navíc doplněn unikátním identifikátorem commitu, informací o autorovi s časem vytvoření a tlačítkem pro rychlý návrat na přehled historie.
+Každý projekt má přehled historie, což jen jednosloupcový či dvousloupcový seznam commitů na hlavní větvi. V levém sloupci se zobrazují commity, které jsou nahrané na vzdáleném serveru, případně jejich poslední stav před ztrátou spojení. Commity, které jsou zvýrazněné pouze světlejší červenou barvou, nejsou promítnuté do souborů, na nichž uživatel aktuálně pracuje. V pravém sloupci se zobrazují commity, které zatím nejsou nahrané na vzdálený server a nejsou tudíž zazálohované a sdílené s ostatními autory. Nejnovější se zobrazují nejvýše. Délka historie je omezena na 250 položek, protože při vyšších počtech ztrácí Aplikace rychlou odezvu. Kliknutím na libovolný commit lze zobrazit jeho detail. Tento detail je hodně podobný náhledu při vytváření commitu. Je akorát navíc doplněn unikátním identifikátorem commit hash \cite{commit-hash}, informací o autorovi s časem vytvoření a tlačítkem pro rychlý návrat na přehled historie.
+
+\FloatBarrier
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{sections/ui/images/history.png}
+	\caption[Historie]{Přehled historie s nezačleněnými a nenasdílenými lokálními změnami}
+	\label{fig:history}
+\end{figure}
+\FloatBarrier
 
 Pokud některý z ostatních autorů nasdílí nové změny, aplikace zobrazí systémové upozornění nehledě na to, zdali je hlavní okno v popředí. Upozornění obsahuje stručnou informaci, že jsou k dispozici nové změny a po rozkliknutí přesune uživatele do Aplikace s obrazovkou pro začlenění změn.
 
 Při začleňování změn má uživatel k dispozici dvě tlačítka a seznam všech známých nezačleněných změn v již známém stylu z vytváření commitu a z detailu commitu. První tlačítko je zvýrazněné a slouží pro přijetí změn, což provede sloučení větve lokální se vzdálenou. Druhé tlačítko aktualizuje seznam upravených souborů.
 
-Poslední obrazovkou, která je v menu vždy dostupná, je nastavení. Zde učivatel může volit mezi českým a anglickým jazykem uživatelského rozhraní, vypnout či zapnout automatické sdílení lokálních změn a obnovit tyto dvě položko do původního stavu jako po prvním spuštění, což nastavý český jazyk a povolí automatické sdílení.
+Poslední obrazovkou, která je v menu vždy dostupná, je nastavení. Zde uživatel může volit mezi českým a anglickým jazykem uživatelského rozhraní, vypnout či zapnout automatické sdílení lokálních změn a obnovit tyto dvě položky do původního stavu jako po prvním spuštění, což nastavý český jazyk a povolí automatické sdílení.
