@@ -58,7 +58,7 @@ const CardTitle = require('material-ui/Card').CardTitle
 	\begin{minted}[]{javascript}
 import { Card, CardTitle } from 'material-ui/Card'
 	\end{minted}
-	\caption[Komponenta v JSX]{Závislost na Card a CardTitle v JSX}
+	\caption[Závislost v JSX]{Závislost na Card a CardTitle v JSX}
 \end{listing}
 
 \FloatBarrier
@@ -71,8 +71,7 @@ Další problematickou fází vývoje byla práce s metodou pro klonování repo
 
 \subsection{Nekonečné trvání}
 
-% @TODO: http://www.nodegit.org/api/clone/
-Metodu pro klonování repozitářů, s funkcionalitou podle dokumentace srovnatelnou s \mintinline{bash}{git clone repository}, nebylo možné použít, protože ve chvíli, kdy například volání mělo selhat z důvodu špatných přístupových údajů uživatele, metoda implementovaná jako JavaScriptová \uv{Promise} nikdy neskončila úspěchem ani neúspěchem, což znemožnilo možnost informovat uživatele o výsledku a patřičně aktualizovat uživatelské rozhraní. Náhradním řešením bylo ustoupení od metody Clone nahrazením za sérii jiných. Nyní se namísto klonování nejdříve lokálně inicializuje prázdný repozitář, do kterého se poté přidá URL repozitáře jako remote origin a následně spustí fetch na tento origin. Pokud již repozitář něco obsahuje na hlavní větvi, provede se provázání s větví lokální, tj. vytvoření lokální větve a nastavení upstreamu.
+Metodu pro klonování repozitářů, s funkcionalitou podle dokumentace\footnote{\url{http://www.nodegit.org/api/clone/}} srovnatelnou s \mintinline{bash}{git clone repository}, nebylo možné použít, protože ve chvíli, kdy například volání mělo selhat z důvodu špatných přístupových údajů uživatele, metoda implementovaná jako JavaScriptová \uv{Promise} nikdy neskončila úspěchem ani neúspěchem, což znemožnilo možnost informovat uživatele o výsledku a patřičně aktualizovat uživatelské rozhraní. Náhradním řešením bylo ustoupení od metody Clone nahrazením za sérii jiných. Nyní se namísto klonování nejdříve lokálně inicializuje prázdný repozitář, do kterého se poté přidá URL repozitáře jako remote origin a následně spustí fetch na tento origin. Pokud již repozitář něco obsahuje na hlavní větvi, provede se provázání s větví lokální, tj. vytvoření lokální větve a nastavení upstreamu.
 
 \subsection{Chyba nevracející řízení}
 
@@ -95,13 +94,13 @@ Na obrazovce uživatelského rozhraní Aplikace pro vytvoření nového commitu 
 NodeGit poskytuje pro přidávání do a odebírání z připravených položek (staging area) dvě metody, \mintinline{javascript}{Index.add(path)} a \mintinline{javascript}{Index.remove(path)}. Obě metody přijímají jako argument cestu, řetězec znaků, které určují polohu souboru v lokálním souborovém systému. V obou případech dochází k chybě při manipulaci se souborem, který se v systému již nenachází. Pomocí těchto metod tedy nejde pracovat s přidávání a odebíráním neexistujících souborů na a ze stage. Alternativu NodeGit nenábízí. Řešením je tedy systémové volání v JavaScriptu, které umožňuje přístup k příkazovému řádku, na které lze spouště příkazy \mintinline{bash}{git}. Pro fungování tohoto postupu je nutná instalace programu git a přidání do systémové cesty pro spustitelné programy na zařízení uživatele.
 
 \FloatBarrier
-\begin{figure}[ht]
+\begin{listing}[ht]
 	\begin{minted}[]{javascript}
 const exec = require('child-process-promise').exec
 exec(`cd ${projectPath} && git add "${filePath}"`))
 	\end{minted}
 	\caption{Přidání smazaného souboru}
-\end{figure}
+\end{listing}
 \FloatBarrier
 
 \subsection{Výpis neznámých souborů}
