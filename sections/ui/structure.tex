@@ -2,6 +2,13 @@
 
 Aplikace je tvořena jediným oknem a systémovými upozorněními. Pokud uživatel chce pracovat na více projektech zároveň, může si Aplikaci otevřít víckrát zároveň.
 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{sections/ui/images/flow.png}
+	\caption{Diagram struktury uživatelského rozhraní}
+\end{figure}
+
 Po levé straně se nabízí rozbalovací menu, jež může obsahovat položky detail projektu, „Commit“, „Projekty“, „Historie“ a „Nastavení“. První zmíněná položka je nahrazena názvem projektu. Vstupní obrazovkou je stránka s projekty, která se také zobrazuje vždy po spuštení aplikace. Obsahuje seznam projektů, které si uživatel do Aplikace přidal pomocí tlačítka plus (Floating Action Button) v pravé dolní části této obrazovky. U každého projektu v seznamu se zobrazuje zvýrazněný název adresáře a jeho celá cesta v lokálním souborovém systému. Dále dvě tlačítka, „ZVOLIT“ a „ODEBRAT“, případně „DETAIL“ a „ODEBRAT“, kde zvolením nastaví uživatel konkrétní projekt jako aktivní, což je ten, na kterém hodlá pracovat. Tlačítkem pro detail je uživatel přesunut na obrazovku s detailem projektu a odebráním dojde k vymázání projektu ze seznamu projektů, nedojde však k úplnému smazání ze souborového systému, takže uživatel může kdykoliv projekt přidat zase zpět. Název aktivního projektu se zobrazuje v horním App baru.
 
 % @TODO: Snackbar
