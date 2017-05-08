@@ -200,14 +200,44 @@
 
 \begin{figure}
 	\dirtree{%
-		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
-		.1 exe\DTcomment{adresář se spustitelnou formou implementace}.
-		.1 src.
-		.2 impl\DTcomment{zdrojové kódy implementace}.
-		.2 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
-		.1 text\DTcomment{text práce}.
-		.2 thesis.pdf\DTcomment{text práce ve formátu PDF}.
-		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
+		.1 build\DTcomment{předpřipravené balíčky s aplikací pro Windows a Linux}.
+		.2 FitGit-linux-v1.0.4\DTcomment{varianta pro Linux}.
+		.2 FitGit-windows-v1.0.4\DTcomment{varianta pro Windows}.
+		.1 FitGit\DTcomment{zdrojové soubory aplikace}.
+		.2 app\DTcomment{aplikační logika}.
+		.3 actions\DTcomment{akce pro Redux}.
+		.3 components\DTcomment{specifické komponenty UI}.
+		.3 containers\DTcomment{obecné komponenty UI}.
+		.3 languages\DTcomment{překlady}.
+		.4 cs.json\DTcomment{český}.
+		.4 en.json\DTcomment{anglický}.
+		.3 reducers\DTcomment{reducery pro Redux}.
+		.3 store\DTcomment{nastavení uchovávání stavu}.
+		.3 utils\DTcomment{pomocné scripty}.
+		.3 app.js\DTcomment{vstupní bod UI}.
+		.3 index.css\DTcomment{styly UI}.
+		.3 index.html\DTcomment{schránka aplikace}.
+		.3 index.js\DTcomment{vstupní bod pro vykreslení okna se schránkou}.
+		.3 package.json\DTcomment{nastavení závislostí}.
+		.3 routes.js\DTcomment{rozdělení na jednotlivé obrazovky}.
+		.2 .travis.yml\DTcomment{nastavení Travis CI}.
+		.2 appveyor.yml\DTcomment{nastavení Appveyor}.
+		.2 package.json\DTcomment{vstupní konfigurace}.
+		.2 *\DTcomment{další pomocné soubory}.
+		.1 git-latex-document\DTcomment{zdrojové soubory tohoto dokumentu}.
+		.2 sections\DTcomment{jednotlivé kapitoly}.
+		.2 .editorconfig\DTcomment{nastavení jednotného stylu}.
+		.2 .gitignore\DTcomment{nastavení ignorovaných souborů pro verzování}.
+		.2 .travis.yml\DTcomment{nastavení nástroje pro průběžnou integraci}.
+		.2 assignment.pdf\DTcomment{zadání}.
+		.2 BP\_Chalupa\_Filip\_2017.tex\DTcomment{vstupní soubor pro kompilaci}.
+		.2 csn690.bst\DTcomment{konfigurace prostředí}.
+		.2 cvut-logo-bw.pdf\DTcomment{logo školy}.
+		.2 FITthesis.cls\DTcomment{konfigurace prostředí}.
+		.2 iso690.bst\DTcomment{konfigurace prostředí}.
+		.2 mybibliographyfile.bib\DTcomment{zdroje citací}.
+		.2 README.md\DTcomment{čti mě pro GitHub}.
+		.1 bp.pdf\DTcomment{tento dokument}.
 	}
 \end{figure}
 
