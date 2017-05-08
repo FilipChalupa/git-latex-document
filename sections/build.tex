@@ -2,7 +2,7 @@
 
 % @TODO: link na github repo
 % @TODO: link na Node.js
-Aplikaci je možné na cílové zařízení nainstalovat dvěma způsoby. Prvním je stažení například pomocí Gitu ve formě zdrojových kódů, které jsou dostupné v repozitáři Onset/FitGit na GitHubu. Pro kompilaci a spuštění zdrojových kódů je potřeba nainstalovat Node.js, případně nástroje pro kompilaci jazyka C. Tento postup je shodný pro platformu Windows, macOS a linuxové distribuce. Kompilace a následné spuštění se poté provádí tako:
+Aplikaci je možné na cílové zařízení nainstalovat dvěma způsoby. Prvním je stažení například pomocí Gitu ve formě zdrojových kódů, které jsou dostupné v repozitáři Onset/FitGit\footnote{\url{https://github.com/Onset/FitGit}} na GitHubu. Pro kompilaci a spuštění zdrojových kódů je potřeba nainstalovat Node.js\footnote{\url{https://nodejs.org/}}, případně nástroje pro kompilaci jazyka C. Tento postup je shodný pro platformu Windows, macOS a linuxové distribuce. Kompilace a následné spuštění se poté provádí tako:
 
 \FloatBarrier
 \begin{figure}[h]
@@ -24,12 +24,12 @@ npm run build-local
 \end{figure}
 \FloatBarrier
 
-% @TODO: linky na Appveyor a Travis
-Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases. Nové balíčky jsou k dispozici ke každé oštítkované verzi, o které se strají nástroje pro průběžnou integraci Appveyor a Travis CI.
+Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases\footnote{\url{https://github.com/Onset/FitGit/releases}}. Nové balíčky jsou k dispozici ke každé oštítkované verzi, o které se strají nástroje pro průběžnou integraci Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis CI\footnote{\url{https://travis-ci.org/}}.
 
 Tyto dva nástroje byly zvoleny kvůli možnosti zdarma automaticky spouštět skládání testovacích sestavení (buildů), případně ostrých sestavení pro uživatele. Appveyor pak kvůli specializaci na systémy s Windows a Travis na systémy unixové.
 
-Appveyor i Travis jsou propojeni s repozitářem FitGit na GitHubu. S každým novým nahráním změn zdrojových kódů se tyto dva nástroje spustí. Nahrají si k sobě aktualizovaný repozitář, pro který provedou přípazy uvedené v prvním způsobu instalace. Pokud jsou změny označeny štítkem, výslednou aplikaci zabalí do zip archivu s příslušným názvem (FitGit-platforma-verze, kde platforma je windows či linux a verze odpovídá názvu štíku) a nahrají na GitHub do již zmíněné sekce releases. Pokud během tohoto procesu jeden z nástrojů selže, dá o tom vědět vývojáři Aplikace například e-mailovou zprávou a archiv na GitHub nenahraje.
+% @TODO: ref na kód
+Appveyor i Travis jsou propojeni s repozitářem FitGit na GitHubu. S každým novým nahráním změn zdrojových kódů se tyto dva nástroje spustí. Nahrají si k sobě aktualizovaný repozitář, pro který provedou příkazy uvedené v prvním způsobu instalace. Pokud jsou změny označeny štítkem, výslednou aplikaci zabalí do zip archivu s příslušným názvem (FitGit-platforma-verze, kde platforma je windows či linux a verze odpovídá názvu štíku) a nahrají na GitHub do již zmíněné sekce releases. Pokud během tohoto procesu jeden z nástrojů selže, dá o tom vědět vývojáři Aplikace například e-mailovou zprávou a archiv na GitHub nenahraje.
 
 Pokud dojde k nějakému selhání, oba nástroje poskytují detailní výpis, co se na nich spouštělo za příkazy a co vrátily za výsledek. Z této zprávy je možné odvodit, co je se zdrojovými kódy špatně a opravit je.
 

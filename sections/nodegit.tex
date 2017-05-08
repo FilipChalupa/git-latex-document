@@ -106,8 +106,7 @@ exec(`cd ${projectPath} && git add "${filePath}"`))
 
 \subsection{Výpis neznámých souborů}
 
-% @TODO: http://www.nodegit.org/api/repository/ https://github.com/nodegit/nodegit/tree/master/examples
-Se smazanými soubory má problémy i metoda na zjištění změněných souborů \mintinline{javascript}{Repository.getStatus()}. Pro smazané, případně přejmenované, soubory vrací neúplná data, se kterými není možné dále pracovat. Stejně jako v předchozím bodě, dokumentace a ukázky NodeGitu nepočítají s odstraněnými soubory. V tomto případě je však mezi uživateli známo náhradní řešení, které pomocí metody \mintinline{javascript}{Diff.indexToWorkdir(...)} vyhledá všechny změněné neignorované soubory či adresáře a vrátí jejich cesty, se kterými lze dále snadno pracovat pomocí systémových volání \mintinline{bash}{git add path} či \mintinline{bash}{git reset HEAD path}.
+Se smazanými soubory má problémy i metoda na zjištění změněných souborů \mintinline{javascript}{Repository.getStatus()}\footnote{\url{http://www.nodegit.org/api/repository/}}. Pro smazané, případně přejmenované, soubory vrací neúplná data, se kterými není možné dále pracovat. Stejně jako v předchozím bodě, dokumentace a ukázky\footnote{\url{https://github.com/nodegit/nodegit/tree/master/examples}} NodeGitu nepočítají s odstraněnými soubory. V tomto případě je však mezi uživateli známo náhradní řešení, které pomocí metody \mintinline{javascript}{Diff.indexToWorkdir(...)} vyhledá všechny změněné neignorované soubory či adresáře a vrátí jejich cesty, se kterými lze dále snadno pracovat pomocí systémových volání \mintinline{bash}{git add path} či \mintinline{bash}{git reset HEAD path}.
 
 \section{Konflikty}
 
@@ -132,8 +131,7 @@ Zatím byly vypozorovány tyto situaci, při kterých dochází k zamítnutí:
 
 \subsection{Uložiště přístupových údajů}
 
-% @TODO: https://git-scm.com/docs/git-credential-store
-Pro ukládání přístupových údajů pro HTTPS spojení využívá Aplikace standardní funkce Gitu, Credential Store. Tato funkce však nezaručuje, že údaje poskytne vždy a že jejich změnu si zapamatuje. Není tedy vhodné se na ni spoléhat. Jako dočasné řešení je přimět uživatele spustit příkaz pro nastavení trvalého ukládání přihlašovacích údajů na disk.
+Pro ukládání přístupových údajů pro HTTPS spojení využívá Aplikace standardní funkce Gitu, Credential Store\footnote{\url{https://git-scm.com/docs/git-credential-store}}. Tato funkce však nezaručuje, že údaje poskytne vždy a že jejich změnu si zapamatuje. Není tedy vhodné se na ni spoléhat. Jako dočasné řešení je přimět uživatele spustit příkaz pro nastavení trvalého ukládání přihlašovacích údajů na disk.
 
 \FloatBarrier
 \begin{listing}[ht]
@@ -146,13 +144,11 @@ git config --global credential.helper store
 
 \subsection{Správce klíčů pro SSH}
 
-% @TODO: https://www.openssh.com/
-NodeGit nepodporuje správce klíčů OpenSSH na Windows. Je tedy nutné doinstalovat alternativu Pageant. Navíc je o neběžícím agentu uživatele složité informovat, protože NodeGit tento stav nerozlišuje a poskytuje stejná data i v případě, že Pageant běží, ale pro konkrétní server neposkytuje klíče.
+NodeGit nepodporuje správce klíčů OpenSSH\footnote{\url{https://www.openssh.com/}} na Windows. Je tedy nutné doinstalovat alternativu Pageant. Navíc je o neběžícím agentu uživatele složité informovat, protože NodeGit tento stav nerozlišuje a poskytuje stejná data i v případě, že Pageant běží, ale pro konkrétní server neposkytuje klíče.
 
 \subsection{cURL}
 
-% @TODO: https://curl.haxx.se/libcurl/
-Během vývoje došlo k několika chybám na linuxové platformě týkající se chyby libcurl. Zatím se problém neopakuje. Každopádně závislost NodeGitu na správné konfiguraci platformy je kritická a nevylučuje se, že podobné selhání mohou nastat znovu.
+Během vývoje došlo k několika chybám na linuxové platformě týkající se chyby libcurl\footnote{\url{https://curl.haxx.se/libcurl/}}. Zatím se problém neopakuje. Každopádně závislost NodeGitu na správné konfiguraci platformy je kritická a nevylučuje se, že podobné selhání mohou nastat znovu.
 
 \section{Řešení}
 

@@ -23,7 +23,6 @@ Uživatelské rozhraní spoléhá na silnou intuici či dřívější zkušenost
 
 \subsection{Přidávání projektu}
 
-% @TODO: link to github, bitbucket, gitlab
 Kromě lépe formulovaných a obsáhlejších popisků v modálním okně pro přidávání nového projektu by jistě usnadnily ovládání ukázky typických zástupců online služeb pro správu Gitových repozitářů (například GitHub, Bitbucket, GitLab), jak se v těchto službách zakládají nové projekty a kde je adresa pro remote, která se využívá v Aplikaci právě při přidávání projektu z URL.
 
 \subsection{Stálé menu}
@@ -53,8 +52,7 @@ Zejména noví uživatelé Gitu nemají často nastaveno jméno a e-mail. Tyto �
 
 \subsection{Zvýraznění syntaxe}
 
-% @TODO: link https://codemirror.net/
-Při volbě vhodných nástrojů pro vývoj Aplikace byl zahrnut i požadavek na možnost zvýrazňování syntaxe, předně \LaTeX{ové}, například na obrazovce s detailem commitu. Pro JavaScript je k dispozici nepřeberné množství knihoven zajišťujícíh tuto funkcionalitu. Při jejich studii byl zvolen CodeMirror jako nejatraktivnější vzhledem k vestavěné podpoře \LaTeX{u} a možnosti zobrazovat změny v souborech.
+Při volbě vhodných nástrojů pro vývoj Aplikace byl zahrnut i požadavek na možnost zvýrazňování syntaxe, předně \LaTeX{ové}, například na obrazovce s detailem commitu. Pro JavaScript je k dispozici nepřeberné množství knihoven zajišťujícíh tuto funkcionalitu. Při jejich studii byl zvolen CodeMirror\footnote{\url{https://codemirror.net/}} jako nejatraktivnější vzhledem k vestavěné podpoře \LaTeX{u} a možnosti zobrazovat změny v souborech.
 
 \subsection{Náhled obrázků}
 
@@ -74,8 +72,7 @@ Další často využívanou funkcí Gitu při práci zejména ve vícech lidech 
 
 \subsection{Kontrola závislostí}
 
-% @TODO: link na https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage, pageant
-Aplikace se spoléhá na některé další programy, které musí být v systému nainstalovány a správně nastaveny. Pro správné fungování by měla Aplikace kontrolovat, že všechny tyto závislosti jsou dostupné. Jedná se zejména o Git a jeho podpůrné nástroje například pro správu přístupových údajů, Credential Storage a Pageant. V případě nedostupnosti či špatné konfigurace by měla Aplikace na tuto skutečnost uživatele upozornit s nápovědou možného řešení.
+Aplikace se spoléhá na některé další programy, které musí být v systému nainstalovány a správně nastaveny. Pro správné fungování by měla Aplikace kontrolovat, že všechny tyto závislosti jsou dostupné. Jedná se zejména o Git a jeho podpůrné nástroje například pro správu přístupových údajů, Credential Store a Pageant. V případě nedostupnosti či špatné konfigurace by měla Aplikace na tuto skutečnost uživatele upozornit s nápovědou možného řešení.
 
 \subsection{Propojení se vzdálenými servery}
 
@@ -85,12 +82,12 @@ Servery jako GitHub, Bitbucket, GitLab nabízejí vlastní bohaté rozhraní na 
 \subsection{Hlášení chyb uživatelovi}
 
 % @TODO: link na nodegit error codes
-Například během připojování ke vzdálenému serveru může dojít k mnoha různým chybám, o kterých nyní není uživatel nikterak informován. Často se jedná o chyby, které se týkají zamezení přístupu k projektu, protože má uživatel špatně nastavené heslo, špatný nebo žádný klíč pro ssh, přístup mu nebyl nikdy udělen, není připojen k internetu apod. O chybách je možné uživatele informovat třeba pomocí systémových upozornění či komponentou Snackbar. Je však nutné se najdříve vypořádat se zpracováním chyb, které jsou knihovnou NodeGit často předávány pouze v textové podobě bez dokumentace; na strojově čitelnější variantě se pracuje. Další hůře zpracovatelné chyby jsou přímo od vzdálených serverů, které také nejsou možné zobrazit uživateli bez předzpracování, protože nejsou česky, pro nezkušeného uživatele nemají dostatečnou informační hodnotu a formou se liší napříč různými servery, různé texty pro stejné chyby.
+% @TODO: ref na Snackbar v ui
+Například během připojování ke vzdálenému serveru může dojít k mnoha různým chybám, o kterých nyní není uživatel nikterak informován. Často se jedná o chyby, které se týkají zamezení přístupu k projektu, protože má uživatel špatně nastavené heslo, špatný nebo žádný klíč pro SSH, přístup mu nebyl nikdy udělen, není připojen k internetu apod. O chybách je možné uživatele informovat třeba pomocí systémových upozornění či komponentou Snackbar. Je však nutné se najdříve vypořádat se zpracováním chyb, které jsou knihovnou NodeGit často předávány pouze v textové podobě bez dokumentace; na strojově čitelnější variantě, která je zatím označena jako \uv{EXPERIMENTAL}, se pracuje \cite{nodegit-error-codes}. Další hůře zpracovatelné chyby jsou přímo od vzdálených serverů, které také nejsou možné zobrazit uživateli bez předzpracování, protože nejsou česky, pro nezkušeného uživatele nemají dostatečnou informační hodnotu a formou se liší napříč různými servery, různé texty pro stejné chyby.
 
 \subsection{Hlášení chyb vývojáři}
 
-% @TODO: https://github.com/Onset/FitGit/issues/56 a https://libgit2.github.com/
-Za běhu Aplikace může dojít i k chybám, které nemusí oznámením uživateli prospět. Typicky jsou to takové, jež jsou způsobené chybou v kódu, uživateli nejsou zřejmé, neomezují další chod Aplikace. Nyní se takové události zapisují do souboru na uživatelově počítači. Pro možnou analýzu těchto dat je tedy nutné informovat uživatele o jejich extistenci a umožnit jim snadné sdílení s vývojářem třeba e-mailem nebo je odesílat automaticky. Za zvážení stojí i rozhodnutí, jak se vypořádat s chybami, které jsou mimo kontrolu Aplikace. Během vývoje došlo jednou k selhání knihovny libgit2 napsané v jazyce C, jež po svém pádu nevrátila řízení JavaScriptu, který by chybu mohl zapsat do příslušného souboru. Není vyloučeno, že podobná selhání se mohou opakovat.
+Za běhu Aplikace může dojít i k chybám, které nemusí oznámením uživateli prospět. Typicky jsou to takové, jež jsou způsobené chybou v kódu, uživateli nejsou zřejmé, neomezují další chod Aplikace. Nyní se takové události zapisují do souboru na uživatelově počítači. Pro možnou analýzu těchto dat je tedy nutné informovat uživatele o jejich extistenci a umožnit jim snadné sdílení s vývojářem třeba e-mailem nebo je odesílat automaticky. Za zvážení stojí i rozhodnutí, jak se vypořádat s chybami, které jsou mimo kontrolu Aplikace. Během vývoje došlo jednou k selhání\footnote{\url{https://github.com/Onset/FitGit/issues/56}} knihovny libgit2\footnote{\url{https://libgit2.github.com/}} napsané v jazyce C, jež po svém pádu nevrátila řízení JavaScriptu, který by chybu mohl zapsat do příslušného souboru. Není vyloučeno, že podobná selhání se mohou opakovat.
 
 \subsection{Ukázkový projekt}
 
