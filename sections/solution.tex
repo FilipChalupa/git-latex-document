@@ -1,5 +1,5 @@
 \chapter{Řešení}
-Řešením je nová aplikace, dále jen Aplikace, která je schopná běžet na různých cílových zařízení, se systémem Windows nebo Linux, tak, aby vystihla různorodost zařízení členů týmu (operační systém, editor LaTeXu), ale zároveň nenutila všechny členy k jejímu aktivnímu využívání. Čtyřčlenný tým může vypadat třeba tak, že jeden autor pracuje na svém počítači se systémem Windows s pomocí Aplikace, podobně další dva členové se systémem Linux a čtvrtý člen s pokročilou znalostí verzovacího systému Git nemusí Aplikaci používat vůbec a stejně může bez omezení spolupracovat se zbytkem týmu. Aplikace tedy musí být schopná komunikovat se systémem Git, který splňuje požadavek na zálohování a verzování.
+Řešením je nová aplikace, dále jen Aplikace, která je schopná běžet na různých cílových zařízeních, se systémem Windows nebo Linux, tak, aby vystihla různorodost zařízení členů týmu (operační systém, editor LaTeXu), ale zároveň nenutila všechny členy k jejímu aktivnímu využívání. Čtyřčlenný tým může vypadat třeba tak, že jeden autor pracuje na svém počítači se systémem Windows s pomocí Aplikace, podobně další dva členové se systémem Linux a čtvrtý člen s pokročilou znalostí verzovacího systému Git nemusí Aplikaci používat vůbec a stejně zvládne bez omezení spolupracovat se zbytkem týmu. Aplikace tedy musí být schopná komunikovat se systémem Git, který splňuje požadavek na zálohování a verzování.
 
 \section{Požadavky}
 
@@ -9,7 +9,7 @@
 	\item nezávislost na Aplikaci, uživatel by měl mít kdykoliv možnost přejít na jiný nástroj pro správu Gitu,
 	\item zálohování na vzdálené servery jako jsou GitHub\footnote{\url{https://github.com/}}, Bitbucket\footnote{\url{https://bitbucket.org/}}, fakultní GitLab\footnote{\url{https://gitlab.fit.cvut.cz/}},
 	\item nezávislost na neustálém internetovém spojení,
-	\item kompatibilita s projekty psanými \LaTeX{u},
+	\item kompatibilita s projekty psanými v \LaTeX{u},
 	\item automatické nahrávání a stahování změn,
 	\item uživatelské rozhraní:
 		\begin{itemize}
@@ -18,7 +18,7 @@
 			\item detail projektu, kde se nachází v místním systému a na jaký vzdálený server je zálohovaný,
 			\item při přidávání projektu umožnit volbu mezi již existujícím repozitářem v souborovém systému či stažením ze vzdáleného serveru,
 			\item historie projektu se zobrazením přidaných a odebraných řádků ve změněných souborech,
-			\item podpora ověření uživatele na vzdáleném serveru pomocí https i ssh,
+			\item podpora ověření uživatele na vzdáleném serveru pomocí HTTPS i SSH,
 			\item u projektů s uživatelským jménem a heslem možnost lokální změny,
 			\item v případě nových úprav v pracovní složce projektu provést uživatele vytvářením commitu,
 			\item automaticky zjišťovat nové změny na vzdáleném serveru a uživatele na ně upozorňovat,
