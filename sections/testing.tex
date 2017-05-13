@@ -4,7 +4,7 @@ Během vývoje byly prováděny průběžně dva typy testování, jejich účel
 
 \section{Automatické}
 
-Jedním z prvních kroků bylo nastavení testovacích služeb Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis CI\footnote{\url{https://travis-ci.org/}}. Zdrojové kódy byly na tyto služby automaticky průběžně odesílány. Na nich pak probíhala sada testů zabývajících se zejména zkouškou, že Aplikace lze složit do podoby spustitelného programu. Typicky se jednalo o kontrolu, že jsou k dispozici všechny balíčky závislostí, že kód v jazyce C se kompiluje se správnými parametry a že electron-builder\footnote{\url{https://www.npmjs.com/package/electron-builder}} pro tvorbu předpřipravených balíčku je spávně nakonfigurovaný, dostává správná data z předchozích procesů.
+Jedním z prvních kroků bylo nastavení testovacích služeb Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis~CI\footnote{\url{https://travis-ci.org/}}. Zdrojové kódy byly na tyto služby automaticky průběžně odesílány. Na nich pak probíhala sada testů zabývajících se zejména zkouškou, že Aplikace lze složit do podoby spustitelného programu. Typicky se jednalo o kontrolu, že jsou k dispozici všechny balíčky závislostí, že kód v jazyce C se kompiluje se správnými parametry a že electron-builder\footnote{\url{https://www.npmjs.com/package/electron-builder}} pro tvorbu předpřipravených balíčku je spávně nakonfigurovaný, dostává správná data z předchozích procesů.
 
 \section{Uživatelské}
 
@@ -20,7 +20,7 @@ Narozdíl od automatických testů, které byly během práce na Aplikaci spouš
 		\item Vytvoř tři prázdné soubory.
 		\item Vyčkej na systémové upozornění vybízející k vytvoření commitu.
 		\item Vytvoř commit osahující všechny nové soubory a popiš ho zprávou obsahující háčky a čárky.
-		\item Zkontroluj, že na obrazovce \uv{Historie} je commit do pár vteřit označený jako nahraný na vzdálený server (levý sloupec).
+		\item Zkontroluj, že na obrazovce \uv{Historie} je commit do pár vteřin označený jako nahraný na vzdálený server (levý sloupec).
 		\item Zopakuj předchozí body pro GitHub a GitLab, pro ověření přes HTTPS i SSH.
 	\end{enumerate}
 	\item Začlenit změny
