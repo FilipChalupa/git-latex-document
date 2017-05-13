@@ -24,7 +24,7 @@ npm run build-local
 
 Zmíněný nástroj \mintinline{bash}{npm} je součástí Node.js a slouží ke správě JavaScriptových závislostí a balíčků.
 
-Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases\footnote{\url{https://github.com/Onset/FitGit/releases}}. Nové balíčky jsou k dispozici ke každé otagované verzi, o které se strají nástroje pro průběžnou integraci Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis CI\footnote{\url{https://travis-ci.org/}}.
+Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases\footnote{\url{https://github.com/Onset/FitGit/releases}}. Nové jsou automaticky vytvářeny ke každé otagované verzi, o které se strají nástroje pro průběžnou integraci Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis CI\footnote{\url{https://travis-ci.org/}}. Konfigurace se nachází v kořenovém adresáři repozitáře aplikace v souborech \path{appveyor.yml}\footnote{\url{https://github.com/Onset/FitGit/blob/master/appveyor.yml}} a \path{.travis.yml}\footnote{\url{https://github.com/Onset/FitGit/blob/master/.travis.yml}}.
 
 Tyto dva nástroje byly zvoleny kvůli možnosti zdarma automaticky spouštět skládání testovacích sestavení (buildů), případně ostrých sestavení pro uživatele. Appveyor pak kvůli specializaci na systémy s Windows a Travis na~systémy unixové.
 
