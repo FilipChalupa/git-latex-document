@@ -40,7 +40,7 @@ Obrazovka pro začlenění nových změn obsahuje pouze přehled samotných pozm
 
 \subsection{Podpis na Windows}
 
-Z bezpečnostních důvodů kontroluje systém Windows podpis autora aplikaci. Přidávání podpisu není zatím v automatické distribuci balíčků začleněno. Uživateli je tak sestémem doporučeno, aby Aplikaci neužíval, což je nežádoucí chování a může vést k tomu, že potenciální uživatel Aplikaci opravdu nespustí. Řešením je tedy registrace vývojáře a začlenění podepisování do vytváření předpřipravených balíčků.
+Z bezpečnostních důvodů kontroluje systém Windows podpis autora aplikace. Přidávání podpisu není zatím v automatické distribuci balíčků začleněno. Uživateli je tak sestémem doporučeno, aby Aplikaci neužíval, což je nežádoucí chování a může vést k tomu, že potenciální uživatel Aplikaci opravdu nespustí. Řešením je tedy registrace vývojáře a začlenění podepisování do vytváření předpřipravených balíčků.
 
 
 \section{Nové funkcionality}
@@ -56,7 +56,7 @@ Při volbě vhodných nástrojů pro vývoj Aplikace byl zahrnut i požadavek na
 
 \subsection{Náhled obrázků}
 
-Přehled změn zobrazuje pouze textové úpravy. U binárních souborů se ukáže pouze jejich název a typ změny (přidán, změněn, odstraněn). V případě obrázků se tedy vybízí zobrazit navíc i jejich náhled, pro případ, že si uživatel obsah například nepamatuje nebo ho nikdy neviděl, protože pochází od jiného autora.
+Přehled změn zobrazuje pouze textové úpravy. U binárních souborů se ukáže jen jejich název a typ změny (přidán, změněn, odstraněn). V případě obrázků se tedy nabízí zobrazit navíc i jejich náhled, pro případ, že si uživatel obsah například nepamatuje nebo ho nikdy neviděl, protože pochází od jiného autora.
 
 \subsection{Otevření editoru}
 
@@ -68,7 +68,7 @@ V některých projektech bývá zvykem používat takzvané tagy, značky, kter�
 
 \subsection{Změna větve}
 
-Další často využívanou funkcí Gitu při práci zejména ve vícech lidech je přepínání větví. Jejich přehled a změna je rozpracován v zobrazení detailu projektu, ale kvůli současné nedokončé implementaci možnosti začlenit větev do větve jiné je tento přehled zatím skryt. Doplnění práce s větvemi by také vyžadovalo změnit přístup zobrazovaní historie, který momentálně s cílem zpřehlednění strukturu větví potlačuje.
+Další často využívanou funkcí Gitu při práci zejména ve vícech lidech je přepínání větví. Jejich přehled a změna je rozpracován v zobrazení detailu projektu, ale kvůli současné nedokončené implementaci možnosti začlenit větev do větve jiné je tento přehled zatím skryt. Doplnění práce s větvemi by také vyžadovalo změnit přístup zobrazovaní historie, který momentálně s cílem zpřehlednění strukturu větví potlačuje.
 
 \subsection{Kontrola závislostí}
 
@@ -96,7 +96,7 @@ Pro rychlejší pochopení uživatelského rozhraní a možnost vyzkoušet si fu
 
 \subsection{Verze pro macOS}
 
-Electron a NodeGit, jenž jsou základním stavebním kamenem Aplikace, jsou otevřeny pro široké spektrum operačních systémů, do kterého patří i macOS. Vzhledem k tomu, že Aplikace není závislá na ničem, co by princip této dostupnosti nesdílelo, přímo se vybízí tuto platformu začlenit do automatického procesu vytváření předpřipravených balíčků. Dokonce v některých fázích vývoje aplikace k této automatizaci docházelo, avšak kvůli některým odlišnostem od ostatních systémů od toho bylo upuštěno kvůli příliš rychlým iteracím při vývoji, kdy tím pádem bylo potřeba udržovat průběžnou integraci pro tři systémy, což v době rapidního vývoje jevilo časově nevýhodné. Nyní je Aplikace v ustálenějším stavu a začlenění macOS by tedy nemělo způsobovat větší komplikace.
+Electron a NodeGit, jenž jsou základními stavebními kameny Aplikace, jsou otevřeny pro široké spektrum operačních systémů, do kterého patří i macOS. Vzhledem k tomu, že Aplikace není závislá na ničem, co by princip této dostupnosti nesdílelo, přímo se vybízí tuto platformu začlenit do automatického procesu vytváření předpřipravených balíčků. Dokonce v některých fázích vývoje aplikace k této automatizaci docházelo, avšak kvůli některým odlišnostem od ostatních systémů od toho bylo upuštěno kvůli příliš rychlým iteracím při vývoji, kdy tím pádem bylo potřeba udržovat průběžnou integraci pro tři systémy, což v době rapidního vývoje jevilo časově nevýhodné. Nyní je Aplikace v ustálenějším stavu a začlenění macOS by tedy nemělo způsobovat větší komplikace.
 
 \subsection{A další}
 
