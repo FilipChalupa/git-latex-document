@@ -1,6 +1,6 @@
 \chapter{Distribuce}
 
-Aplikaci je možné na cílové zařízení nainstalovat dvěma způsoby. Prvním je stažení například pomocí Gitu ve formě zdrojových kódů, které jsou dostupné v repozitáři Onset/FitGit\footnote{\url{https://github.com/Onset/FitGit}} na GitHubu. Pro kompilaci a spuštění zdrojových kódů je potřeba nainstalovat Node.js\footnote{\url{https://nodejs.org/}}, případně nástroje pro kompilaci jazyka C. Tento postup je shodný pro platformu Windows, macOS a linuxové distribuce. Kompilace a následné spuštění se poté provádí tako:
+Aplikaci je možné na cílové zařízení nainstalovat dvěma způsoby. Prvním je stažení například pomocí Gitu ve formě zdrojových kódů, které jsou dostupné v repozitáři Onset/FitGit\footnote{\url{https://github.com/Onset/FitGit}} na GitHubu. Pro kompilaci a spuštění zdrojových kódů je potřeba nainstalovat Node.js\footnote{\url{https://nodejs.org/}} a Git\footnote{\url{https://git-scm.com/}}, případně nástroje pro kompilaci jazyka C. Tento postup je shodný pro platformu Windows, macOS a linuxové distribuce. Kompilace a následné spuštění se poté provádí tako:
 
 \FloatBarrier
 \begin{listing}[ht]
@@ -24,7 +24,7 @@ npm run build-local
 
 Zmíněný nástroj \mintinline{bash}{npm} je součástí Node.js a slouží ke správě JavaScriptových závislostí a balíčků.
 
-Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases\footnote{\url{https://github.com/Onset/FitGit/releases}}. Nové jsou automaticky vytvářeny ke každé otagované verzi, o které se strají nástroje pro průběžnou integraci Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis CI\footnote{\url{https://travis-ci.org/}}. Konfigurace se nachází v kořenovém adresáři repozitáře aplikace v souborech \path{appveyor.yml}\footnote{\url{https://github.com/Onset/FitGit/blob/master/appveyor.yml}} a \path{.travis.yml}\footnote{\url{https://github.com/Onset/FitGit/blob/master/.travis.yml}}.
+Druhou variantou je možnost využít již předkompilovaných balíčků pro Windows a Linux, které pro běh také vyžadují nainstalovaný Git. Balíčky jsou opět k dispozici v repozitáři projektu, v tomto případě pod záložkou releases\footnote{\url{https://github.com/Onset/FitGit/releases}}. Nové jsou automaticky vytvářeny ke každé otagované verzi, o které se strají nástroje pro průběžnou integraci Appveyor\footnote{\url{https://www.appveyor.com/}} a Travis CI\footnote{\url{https://travis-ci.org/}}. Konfigurace se nachází v kořenovém adresáři repozitáře aplikace v souborech \path{appveyor.yml}\footnote{\url{https://github.com/Onset/FitGit/blob/master/appveyor.yml}} a \path{.travis.yml}\footnote{\url{https://github.com/Onset/FitGit/blob/master/.travis.yml}}.
 
 Tyto dva nástroje byly zvoleny kvůli možnosti zdarma automaticky spouštět skládání testovacích sestavení (buildů), případně ostrých sestavení pro uživatele. Appveyor pak kvůli specializaci na systémy s Windows a Travis na~systémy unixové.
 
