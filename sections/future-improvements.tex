@@ -1,6 +1,6 @@
 \chapter{Návrhy na rozšíření}
 
-Zejména kvůli nedostatkům pro tuto práci klíčové knihovny NodeGit nebylo možné v~omezeném čase postihnout veškeré neduhy výsledné Aplikace, které byly objeveny během vývoje či při uživatelském testování. Následující přehled by měl navrhnout jejich řešení, případně doplnit Aplikaci o~další funkcionalitu, která by aplikaci významně prospěla.
+Zejména kvůli chybám pro tuto práci klíčové knihovny NodeGit nebylo možné v~omezeném čase postihnout veškeré nedostatky výsledné Aplikace, které byly objeveny během vývoje či při uživatelském testování. Následující přehled by měl navrhnout jejich řešení, případně doplnit Aplikaci o~další funkcionalitu, která by aplikaci významně prospěla.
 
 
 \section{Zlepšení stávajících funcionalit}
@@ -15,11 +15,11 @@ Obrazovka s~historií projektu nyní zobrazuje jen commity do maximálního poč
 
 \subsection{Chytřejší upozorňování na vytvoření commitu}
 
-Aktuální upozorňovací mechanizmus nebere v~potaz hlubší specifika konkrétního projektu. Kromě analýzy počtu přidaných a odebraných řádků a změněných souborů, by bylo vhodné například u~projektů psaných zejména v~\LaTeX{u} sledovat počet změněných kapitol (chapter) či sekcí (section), aby autor pro dosažení ideálního commitu nezasahoval do příliš mnoha nesouvislých částí projektu. Podobný princip by bylo možné implementovat i pro jiné, například programovací, jazyky. V~objektově orientovaných se vybízí přirovnání kapitol k~třídám a sekcí k~metodám. Představou ideálního commitu budiž takový, který neobsahuje více nesouvislých změn.
+Aktuální upozorňovací mechanizmus nebere v~potaz hlubší specifika konkrétního projektu. Kromě analýzy počtu přidaných a odebraných řádků a změněných souborů by bylo vhodné například u~projektů psaných zejména v~\LaTeX{u} sledovat počet změněných kapitol (chapter) či sekcí (section), aby autor pro dosažení ideálního commitu nezasahoval do příliš mnoha nesouvislých částí projektu. Podobný princip by bylo možné implementovat i pro jiné, například programovací, jazyky. V~objektově orientovaných se vybízí přirovnání kapitol k~třídám a sekcí k~metodám. Představou ideálního commitu budiž takový, který neobsahuje více nesouvislých změn.
 
 \subsection{Průvodce ovládáním}
 
-Uživatelské rozhraní spoléhá na silnou intuici či dřívější zkušenost. Malé množství popisků a terminologie typická pouze pro Git (například „commit“) nikte\-rak neulehčují uživateli orientaci v~Aplikaci. Řešením tohoto neduhu by bylo doplnění více popisků ke většině prvků. Popisky by mohli mohly být představeny uživateli ve dvou podobách. První variantou by byly takové, které se zobrazí pouze při prvním setkání uživatele s~daným prvkem. Druhé pak stručnější stálé.
+Uživatelské rozhraní spoléhá na silnou intuici či dřívější zkušenost. Malé množství popisků a terminologie typická pouze pro Git (například „commit“) nikte\-rak neulehčují uživateli orientaci v~Aplikaci. Řešením této vady by bylo doplnění více popisků ke většině prvků. Popisky by mohly být představeny uživateli ve dvou podobách. První variantou by byly takové, které se zobrazí pouze při prvním setkání uživatele s~daným prvkem. Druhé pak stručnější stálé.
 
 \subsection{Přidávání projektu}
 

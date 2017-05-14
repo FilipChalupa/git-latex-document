@@ -73,7 +73,7 @@ Metodu pro klonování repozitářů, s~funkcionalitou podle dokumentace\footnot
 
 \subsection{Chyba nevracející řízení}
 
-Náhradní řešení je však nestabilní. Během několikaměsíční intenzivní práce s~NodeGitem se jednou vyvovala chybová hláška Microsoft Visual C++ Runtime Library v~prostředí Windows, která nebyla správně zachycena a zpracována standardně implementací libgit2 či nadstavbou NodeGitu. Narozdíl od metody pro klonování tato chyba byla zobrazena po manipulaci s~větvemi při vytváření lokální pro spárování se vzdálenou. Chybu nebylo možné opakovaně vyvolat stejným kódem Aplikace, takže nešlo rozumně vymyslet nové náhradní řešení. Vzhledem k~unikátnosti je tento stav považován za velice nepravděpodobný, avšak v~dalším vývoji je nutno dbát ohled na toto nebezpečí vzhledem k~tomu, že se opět jedná o~Promise, JavaScriptový příslib, který nemusí být nikdy naplněn ani zamítnut. Tím pádem v~takové chvíli nemůže stejně jako v~předchozím bodě být aktualizováno uživatelské rozhraní či zopakovaní poslední neúspěšné akce a navíc uživatel je zatížen hláškou v~angličtině, která pro něho nemusí být nikterak vypovídající. Vzhledem k~nemožnosti reprodukce je následující obrázek pouze v~původním základním rozlišení.
+Náhradní řešení z předchozího bodu je však nestabilní. Během několikaměsíční intenzivní práce s~NodeGitem se jednou vyvovala chybová hláška Microsoft Visual C++ Runtime Library v~prostředí Windows, která nebyla správně zachycena a zpracována standardně implementací libgit2 či nadstavbou NodeGitu. Narozdíl od metody pro klonování tato chyba byla zobrazena po manipulaci s~větvemi při vytváření lokální pro spárování se vzdálenou. Chybu nebylo možné opakovaně vyvolat stejným kódem Aplikace, takže nešlo rozumně vymyslet nové náhradní řešení. Vzhledem k~unikátnosti je tento stav považován za velice nepravděpodobný, avšak v~dalším vývoji je nutno dbát ohled na toto nebezpečí vzhledem k~tomu, že se opět jedná o~Promise, JavaScriptový příslib, který nemusí být nikdy naplněn ani zamítnut. Tím pádem v~takové chvíli nemůže stejně jako v~předchozím bodě být aktualizováno uživatelské rozhraní či zopakovaní poslední neúspěšné akce a navíc uživatel je zatížen hláškou v~angličtině, která pro něho nemusí být nikterak vypovídající. Vzhledem k~nemožnosti reprodukce je následující obrázek pouze v~původním základním rozlišení.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -89,7 +89,7 @@ Na obrazovce uživatelského rozhraní Aplikace pro vytvoření nového commitu 
 
 \subsection{Odebrání smazaného souboru}
 
-NodeGit poskytuje pro přidávání do a odebírání z~připravených položek (staging area) dvě metody, \mintinline{javascript}{Index.add(path)}\footnote{\url{http://www.nodegit.org/api/index/\#add}} a \mintinline{javascript}{Index.remove(path)}\footnote{\url{http://www.nodegit.org/api/index/\#remove}}. Obě metody přijímají jako argument cestu, řetězec znaků, které určují polohu souboru v~lokálním souborovém systému. V~obou případech dochází k~chybě při manipulaci se souborem, který se v~systému již nenachází. Pomocí těchto metod tedy nejde pracovat s~přidávání a odebíráním neexistujících souborů na a ze stage. Alternativu NodeGit nenábízí. Řešením je tedy systémové volání v~JavaScriptu, které umožňuje přístup k~příkazovému řádku, na kterém lze spouště příkazy \mintinline{bash}{git}. Pro fungování tohoto postupu je nutná instalace programu git a přidání do systémové cesty pro spustitelné programy na zařízení uživatele.
+NodeGit poskytuje pro přidávání do a odebírání z~připravených položek (staging area) dvě metody, \mintinline{javascript}{Index.add(path)}\footnote{\url{http://www.nodegit.org/api/index/\#add}} a \mintinline{javascript}{Index.remove(path)}\footnote{\url{http://www.nodegit.org/api/index/\#remove}}. Obě metody přijímají jako argument cestu, řetězec znaků, které určují polohu souboru v~lokálním souborovém systému. V~obou případech dochází k~chybě při manipulaci se souborem, který se v~systému již nenachází. Pomocí těchto metod tedy nejde pracovat s~přidávání a odebíráním neexistujících souborů na a ze stage. Alternativu NodeGit nenábízí. Řešením je tedy systémové volání v~JavaScriptu, které umožňuje přístup k~příkazovému řádku, na kterém lze spouštět příkazy \mintinline{bash}{git}. Pro fungování tohoto postupu je nutná instalace programu git a přidání do systémové cesty pro spustitelné programy na zařízení uživatele.
 
 \FloatBarrier
 \begin{listing}[ht]
@@ -115,9 +115,9 @@ Velice problematické bylo ověřování uživatele na vzdálených serverech z~
 
 \subsection{Vzdálené servery}
 
-GitHub, Bitbucket i GitLab mají odlišné odpovědi v~případě, že se k~nim snaží připojit někdo s~navalidními přihlašovacími údaji. Vzhledem k~tomu, že knihovna NodeGit poskytuje přístup pouze k~textové podobně těchto odpovědí, je složité na ně programově reagovat. Kvůli tomu, že jsou v~angličtině a nejsou typicky určené pro nezkušené uživatele, není možné je jen zobrazit a nechat jejich řešení na uživateli.
+GitHub, Bitbucket i GitLab mají odlišné odpovědi v~případě, že se k~nim snaží připojit někdo s~nevalidními přihlašovacími údaji. Vzhledem k~tomu, že knihovna NodeGit poskytuje přístup pouze k~textové podobě těchto odpovědí, je složité na ně programově reagovat. Kvůli tomu, že jsou v~angličtině a nejsou typicky určené pro nezkušené uživatele, není možné je jen zobrazit a nechat jejich řešení na uživateli.
 
-Zatím byly vypozorovány tyto situaci, při kterých dochází k~zamítnutí:
+Zatím byly vypozorovány tyto situace, při kterých dochází k~zamítnutí:
 
 \begin{itemize}
 	\item uživatel poskytl špatné přihlašovací údaje,
